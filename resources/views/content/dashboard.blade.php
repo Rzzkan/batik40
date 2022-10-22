@@ -1,5 +1,7 @@
 @extends('layouts.default')
 @section('content')
+
+@if(auth()->user()->role=='super_admin')
 <div class="page-inner mt--5">
     <div class="row">
         <div class="col-sm-6 col-md-3">
@@ -161,4 +163,6 @@
         </div>
     </div>
 </div>
+@endif
+
 @endsection

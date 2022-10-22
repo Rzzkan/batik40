@@ -17,7 +17,7 @@
                 </div>
             </div>
 
-            <ul class="nav nav-primary">
+            <ul class="nav @if(auth()->user()->role == 'pelanggan') nav-warning @else nav-primary @endif">
                 <li class="nav-item @if($title == 'Dashboard') active @endif ">
                     <a href="{{ route('dashboard') }}">
                         <i class="fas fa-home"></i>
@@ -72,6 +72,8 @@
 
                 @endif
 
+                @if(auth()->user()->role=='super_admin' || auth()->user()->role=='pengelola')
+
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
@@ -107,6 +109,8 @@
                     </a>
                 </li>
 
+                @endif
+
                 @if(auth()->user()->role=='super_admin')
 
                 <li class="nav-section">
@@ -130,6 +134,45 @@
                         <p>Pelanggan</p>
                     </a>
                 </li>
+
+                @endif
+
+                @if(auth()->user()->role=='pelanggan')
+
+                <!-- <li class="nav-section">
+                    <span class="sidebar-mini-icon">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </span>
+                    <h4 class="text-section">Pelanggan</h4>
+                </li>
+
+                <li class="nav-item @if($title == 'Validasi Harga') active @endif ">
+                    <a href="{{ route('validasi.index') }}">
+                        <i class="fas fa-clipboard-check"></i>
+                        <p>Validasi Harga</p>
+                    </a>
+                </li>
+
+                <li class="nav-item @if($title == 'Antrian') active @endif ">
+                    <a href="{{ route('antrian.index') }}">
+                        <i class="fas fa-clone"></i>
+                        <p>Antrian Produksi</p>
+                    </a>
+                </li>
+
+                <li class="nav-item @if($title == 'Proses Produksi') active @endif ">
+                    <a href="{{ route('produksi.index') }}">
+                        <i class="fas fa-hourglass-half"></i>
+                        <p>Proses Produksi</p>
+                    </a>
+                </li>
+
+                <li class="nav-item @if($title == 'Status Mesin') active @endif ">
+                    <a href="{{ route('status_mesin.index') }}">
+                        <i class="fas fa-sliders-h"></i>
+                        <p>Status Mesin</p>
+                    </a>
+                </li> -->
 
                 @endif
             </ul>

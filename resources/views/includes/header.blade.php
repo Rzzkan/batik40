@@ -1,9 +1,13 @@
 <div class="main-header">
     <!-- Logo Header -->
-    <div class="logo-header" data-background-color="blue">
+    <div class="logo-header" @if(auth()->user()->role == 'pelanggan') data-background-color="light" @else data-background-color="blue" @endif >
 
         <a href="index.html" class="logo">
+            @if(auth()->user()->role == 'pelanggan')
+            <img style="height:38px;" src="{{ asset('tema/img/logo_batik_4_0_gelap.png') }}" alt="navbar brand" class="navbar-brand">
+            @else
             <img style="height:38px;" src="{{ asset('tema/img/logo_batik_4_0.png') }}" alt="navbar brand" class="navbar-brand">
+            @endif
         </a>
         <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon">
@@ -20,11 +24,11 @@
     <!-- End Logo Header -->
 
     <!-- Navbar Header -->
-    <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
+    <nav class="navbar navbar-header navbar-expand-lg" @if(auth()->user()->role == 'pelanggan') data-background-color="light" @else data-background-color="blue2" @endif >
 
         <div class="container-fluid">
             <div class="collapse align-middle" id="search-nav">
-                <h5 class="text-light mt-2">Selamat datang <strong>{{ auth()->user()->name }}</strong>, selamat beraktifitas!</h5>
+                <h5 class="text-light mt-2 @if(auth()->user()->role == 'pelanggan') text-dark @endif">Selamat datang <strong>{{ auth()->user()->name }}</strong>, selamat beraktifitas!</h5>
             </div>
             <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
 

@@ -452,8 +452,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-4">
                     <div class="section-title text-center pb-20 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-                        <h6 class="sub-title">Our Contact</h6>
-                        <h4 class="title">Get In <span>Touch.</span></h4>
+                        <h6 class="sub-title">Kontak Kami</h6>
+                        <h4 class="title">Hubungi <span>kami sekarang.</span></h4>
                     </div> <!-- section title -->
                 </div>
             </div> <!-- row -->
@@ -465,7 +465,8 @@
                                 <i class="lni-map-marker"></i>
                             </div>
                             <div class="contact-info-content media-body">
-                                <p class="text">21 King Street, Melbourne <br> Victoria, 1202 Australia.</p>
+                                <p class="text">Alamat. Batik Butimo <br>
+                                    (Kabrokan Wetan, Sendangsari, Kec. Pajangan, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55751)</p>
                             </div>
                         </div> <!-- single contact info -->
                     </div>
@@ -475,8 +476,8 @@
                                 <i class="lni-envelope"></i>
                             </div>
                             <div class="contact-info-content media-body">
-                                <p class="text">hello@uideck.com</p>
-                                <p class="text">support@uideck.com</p>
+                                <p class="text">Email. butimo.official@gmail.com</p>
+                                <p class="text">Call/WA. 0895802090232</p>
                             </div>
                         </div> <!-- single contact info -->
                     </div>
@@ -486,8 +487,8 @@
                                 <i class="lni-phone"></i>
                             </div>
                             <div class="contact-info-content media-body">
-                                <p class="text">+99 000 1111 555</p>
-                                <p class="text">+88 999 5555 444</p>
+                                <p class="text">Facebook: https://www.facebook.com/BatikButimoIndonesia</p>
+                                <p class="text">IG: @butimo.batik</p>
                             </div>
                         </div> <!-- single contact info -->
                     </div>
@@ -510,33 +511,32 @@
                             <a href="#">
                                 <img height="48px" src="{{ asset('tema/img/logo_batik_4_0_gelap.png') }}" alt="Logo">
                             </a>
-                            <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, repudiandae! Totam, nemo sed? Provident.</p>
-                            <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus</p>
+                            <p class="text">Batik 4.0 adalah sebuah inovasi integrasi desain dan manufaktur batik berbasis cloud web dengan kolaborasi teknologi dan budaya.</p>
                         </div> <!-- footer about -->
                     </div>
                     <div class="col-lg-3 col-sm-6 order-sm-3 order-lg-2">
                         <div class="footer-link pt-40">
                             <div class="footer-title">
-                                <h5 class="title">Services</h5>
+                                <h5 class="title">SERVICES</h5>
                             </div>
                             <ul>
-                                <li><a href="#">Business Consultancy</a></li>
-                                <li><a href="#">Digital Marketing</a></li>
-                                <li><a href="#">Market Analysis</a></li>
-                                <li><a href="#">Web Development</a></li>
+                                <li><a href="#">Catalogue Design</a></li>
+                                <li><a href="#">Down Payment (DP) System</a></li>
+                                <li><a href="#">Production Tracking</a></li>
+                                <li><a href="#">Order Tracking</a></li>
                             </ul>
                         </div> <!-- footer link -->
                     </div>
                     <div class="col-lg-3 col-sm-6 order-sm-4 order-lg-3">
                         <div class="footer-link pt-40">
                             <div class="footer-title">
-                                <h5 class="title">About Us</h5>
+                                <h5 class="title">ABOUT US</h5>
                             </div>
                             <ul>
                                 <li><a href="#">Overview</a></li>
                                 <li><a href="#">Why us</a></li>
-                                <li><a href="#">Awards & Recognitions</a></li>
-                                <li><a href="#">Team</a></li>
+                                <li><a href="#">Awards</a></li>
+                                <li><a href="#">Term Agreement</a></li>
                             </ul>
                         </div> <!-- footer link -->
                     </div>
@@ -546,10 +546,9 @@
                                 <h5 class="title">Contact Info</h5>
                             </div>
                             <div class="contact pt-10">
-                                <p class="text">21 King Street, Melbourne <br>
-                                    Victoria, 1202 Australia.</p>
-                                <p class="text">support@uideck.com</p>
-                                <p class="text">+99 000 555 66 22</p>
+                                <p class="text">Kabrokan Wetan, Sendangsari, Kec. Pajangan, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55751</p>
+                                <p class="text">butimo.official@gmail.com</p>
+                                <p class="text">0895802090232</p>
 
                                 <ul class="social mt-40">
                                     <li><a href="#"><i class="lni-facebook"></i></a></li>

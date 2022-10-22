@@ -34,7 +34,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(['checkRole:super_admin,pengelola']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(['checkRole:super_admin,pengelola,pelanggan']);
 Route::resource('mesin', MesinController::class)->middleware(['checkRole:super_admin']);
 Route::resource('biaya_mesin', BiayaMesinController::class)->middleware(['checkRole:super_admin,pengelola']);
 Route::resource('warna', WarnaController::class)->middleware(['checkRole:super_admin']);
