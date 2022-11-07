@@ -24,6 +24,7 @@
                                     <th>No.</th>
                                     <th>Nama Kain</th>
                                     <th>Biaya</th>
+                                    <th>Berat (gram)</th>
                                     <th>Tindakan</th>
                                 </tr>
                             </thead>
@@ -36,6 +37,7 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $dt->nama }}</td>
                                     <td>{{ "Rp " . number_format($dt->biaya,2,',','.') }}</td>
+                                    <td>{{ $dt->berat . ' gram' }}</td>
 
                                     <td>
                                         <div class="dropdown">

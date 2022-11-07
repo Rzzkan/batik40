@@ -61,6 +61,7 @@ class PelangganController extends Controller
             'name' => $request->inpNama,
             'email' => $request->inpEmail,
             'no_hp' => $request->inpNo,
+            'member' => $request->inpMember,
             'role' => 'pelanggan',
             'password' => Hash::make($request->inpEmail)
         ]);
@@ -113,15 +114,33 @@ class PelangganController extends Controller
             'inpNo' => 'required|min:10'
         ]);
 
+        if ($request->inpPassLama != '') {
+            if (Hash::check($request->inpPassLama, auth()->user()->password)) {
+                if ($request->inpPassBaru != '') {
+                    if ($request->inpPassBaru == $request->inpPassConfirm) {
+                        $dataUp['password'] = Hash::make($request->inpPassBaru);
+                    } else {
+                        return redirect()->route('pelanggan.edit',  $id)->with(['danger' => 'Konfirmasi Password Salah']);
+                    }
+                }
+            } else {
+                return redirect()->route('pelanggan.edit',  $id)->with(['danger' => 'Password Lama Salah']);
+            }
+        }
+
         $dataUp['name'] = $request->inpNama;
         $dataUp['email'] = $request->inpEmail;
         $dataUp['no_hp'] = $request->inpNo;
+        $dataUp['member'] = $request->inpMember;
         $dataUp['role'] = 'pelanggan';
-        $dataUp['password'] = Hash::make($request->inpEmail);
 
         $pelanggan = Pelanggan::findOrFail($id);
         $pelanggan->update($dataUp);
-        return redirect()->route('pelanggan.index')->with(['success' => 'Data Berhasil Disimpan']);
+        if (auth()->user()->role == 'pelanggan') {
+            return redirect()->route('dashboard')->with(['success' => 'Data Berhasil Disimpan']);
+        } else {
+            return redirect()->route('pelanggan.index')->with(['success' => 'Data Berhasil Disimpan']);
+        }
     }
 
     /**

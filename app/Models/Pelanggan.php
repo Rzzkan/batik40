@@ -12,7 +12,7 @@ class Pelanggan extends Model
     protected $table = 'users';
 
     protected $fillable = [
-        'name', 'no_hp', 'email', 'role', 'password'
+        'name', 'no_hp', 'email', 'role', 'password', 'member'
     ];
 
     protected $hidden = [];

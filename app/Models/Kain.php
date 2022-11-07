@@ -12,7 +12,7 @@ class Kain extends Model
     protected $table = 'kain';
 
     protected $fillable = [
-        'nama', 'biaya'
+        'nama', 'biaya', 'berat'
     ];
 
     protected $hidden = [];

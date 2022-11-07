@@ -46,7 +46,11 @@
                                     <div class="u-text">
                                         <h4>{{ auth()->user()->name }}</h4>
                                         <p class="text-muted">{{ auth()->user()->email }}</p>
+                                        @if(auth()->user()->role == 'pelanggan')
+                                        <a href="{{ route('pelanggan.edit', auth()->user()->id) }}" class="btn btn-xs btn-secondary btn-sm">Ubah Profil</a>
+                                        @else
                                         <a href="{{ route('pengelola.edit', auth()->user()->id) }}" class="btn btn-xs btn-secondary btn-sm">Ubah Profil</a>
+                                        @endif
                                         <a class="btn btn-xs btn-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout

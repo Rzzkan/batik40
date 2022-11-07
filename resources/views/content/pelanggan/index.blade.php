@@ -26,6 +26,7 @@
                                     <th>Role</th>
                                     <th>Email</th>
                                     <th>No. HP</th>
+                                    <th>Member</th>
                                     <th>Tindakan</th>
                                 </tr>
                             </thead>
@@ -40,6 +41,13 @@
                                     <td>{{ $dt->role }}</td>
                                     <td>{{ $dt->email }}</td>
                                     <td>{{ $dt->no_hp }}</td>
+                                    <td>
+                                        @if($dt->member)
+                                        <button class="btn btn-sm btn-success">Member</button>
+                                        @else
+                                        <button class="btn btn-sm btn-danger">Non Member</button>
+                                        @endif
+                                    </td>
 
                                     <td>
                                         <div class="dropdown">

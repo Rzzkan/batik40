@@ -109,6 +109,13 @@
                     </a>
                 </li>
 
+                <li class="nav-item @if($title == 'Status Transaksi') active @endif ">
+                    <a href="{{ route('status_transaksi.index') }}">
+                        <i class="fas fa-sliders-h"></i>
+                        <p>Status Transaksi</p>
+                    </a>
+                </li>
+
                 @endif
 
                 @if(auth()->user()->role=='super_admin')
@@ -139,40 +146,93 @@
 
                 @if(auth()->user()->role=='pelanggan')
 
-                <!-- <li class="nav-section">
+                <li class="nav-section">
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
                     </span>
                     <h4 class="text-section">Pelanggan</h4>
                 </li>
 
-                <li class="nav-item @if($title == 'Validasi Harga') active @endif ">
-                    <a href="{{ route('validasi.index') }}">
+                <li class="nav-item @if($title == 'Alamat') active @endif ">
+                    <a href="{{ route('alamat.index') }}">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Alamat</p>
+                    </a>
+                </li>
+
+                <li class="nav-item @if($title == 'Panduan' || 
+                $title == 'Motif Dasar' || 
+                $title == 'Panduan' || 
+                $title == 'Hasil Desain') active @endif ">
+                    <a data-toggle="collapse" href="#customer">
                         <i class="fas fa-clipboard-check"></i>
-                        <p>Validasi Harga</p>
+                        <p>Customer</p>
+                        <span class="caret"></span>
+                    </a>
+
+                    <div class="collapse @if($title == 'Panduan' || 
+                $title == 'Motif Dasar' || 
+                $title == 'Panduan' || 
+                $title == 'Hasil Desain') show @endif " id="customer">
+                        <ul class="nav nav-collapse">
+                            <li class="@if($title == 'Panduan') active @endif ">
+                                <a href="{{ route('panduan.index') }}">
+                                    <span class="sub-item">Panduan</span>
+                                </a>
+                            </li>
+                            <li class="@if($title == 'Motif Dasar') active @endif ">
+                                <a href="{{ route('motif.index') }}">
+                                    <span class="sub-item">Motif Dasar</span>
+                                </a>
+                            </li>
+                            <li class="@if($title == 'Pelanggan') active @endif ">
+                                <a href="#">
+                                    <span class="sub-item">Buat Desain</span>
+                                </a>
+                            </li>
+                            <li class="@if($title == 'Hasil Desain') active @endif ">
+                                <a href="{{ route('hasil_desain.index') }}">
+                                    <span class="sub-item">Hasil</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item @if($title == 'Keranjang') active @endif ">
+                    <a href="{{ route('keranjang.index') }}">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>Keranjang</p>
                     </a>
                 </li>
 
-                <li class="nav-item @if($title == 'Antrian') active @endif ">
-                    <a href="{{ route('antrian.index') }}">
-                        <i class="fas fa-clone"></i>
-                        <p>Antrian Produksi</p>
-                    </a>
-                </li>
-
-                <li class="nav-item @if($title == 'Proses Produksi') active @endif ">
-                    <a href="{{ route('produksi.index') }}">
+                <li class="nav-item @if($title == 'Transaksi') active @endif ">
+                    <a href="{{ route('transaksi.index') }}">
                         <i class="fas fa-hourglass-half"></i>
-                        <p>Proses Produksi</p>
+                        <p>Transaksi</p>
                     </a>
                 </li>
 
-                <li class="nav-item @if($title == 'Status Mesin') active @endif ">
-                    <a href="{{ route('status_mesin.index') }}">
-                        <i class="fas fa-sliders-h"></i>
-                        <p>Status Mesin</p>
+                <li class="nav-section">
+                    <span class="sidebar-mini-icon">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </span>
+                    <h4 class="text-section">Bantuan</h4>
+                </li>
+
+                <li class="nav-item @if($title == 'Happy Customer') active @endif ">
+                    <a href="{{ route('review.index') }}">
+                        <i class="far fa-star"></i>
+                        <p>Happy Customer</p>
                     </a>
-                </li> -->
+                </li>
+
+                <li class="nav-item @if($title == 'Customer Service') active @endif ">
+                    <a href="#">
+                        <i class="fas fa-sliders-h"></i>
+                        <p>Customer Service</p>
+                    </a>
+                </li>
 
                 @endif
             </ul>

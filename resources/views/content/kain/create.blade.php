@@ -17,7 +17,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-head-row">
-                        <strong><i class="far fa-hdd mr-2"> </i> Form Jenis Kain</strong><a href="{{ url()->previous() }}" class="btn btn-danger btn-sm ml-auto"><i class="fas fa-arrow-left mr-2"> </i> Back</a>
+                        <strong><i class="far fa-hdd mr-2"> </i> Form Jenis Kain (per 1m x 1m)</strong><a href="{{ url()->previous() }}" class="btn btn-danger btn-sm ml-auto"><i class="fas fa-arrow-left mr-2"> </i> Back</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -35,6 +35,11 @@
                             </div>
 
                             <div class="col-md-6 form-group input-group-sm">
+                                <label for="inpBerat">Berat Kain (gram)</label>
+                                <input type="number" class="form-control" placeholder="" id="inpBerat" name="inpBerat">
+                            </div>
+
+                            <div class="col-md-12 form-group input-group-sm">
                                 <input class="btn btn-primary btn-sm" type="submit" class="form-control">
                             </div>
                         </div>

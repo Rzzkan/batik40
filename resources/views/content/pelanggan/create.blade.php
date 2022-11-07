@@ -38,6 +38,22 @@
                                 <input type="text" class="form-control" placeholder="" id="inpNo" name="inpNo">
                             </div>
 
+                            <div class="col-md-6 form-group input-group-sm">
+                                <label for="inpMember">Member</label>
+                                <br>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label" for="inpStatus1">
+                                        <input type="radio" class="form-check-input" id="inpStatus1" name="inpMember" value='0'>Non Member
+                                    </label>
+                                </div>
+
+                                <div class="form-check-inline">
+                                    <label class="form-check-label" for="inpStatus2">
+                                        <input type="radio" class="form-check-input" id="inpStatus2" name="inpMember" value='1'>Member
+                                    </label>
+                                </div>
+                            </div>
+
                             <div class="col-md-12 form-group input-group-sm">
                                 <input class="btn btn-primary btn-sm" type="submit" class="form-control">
                             </div>

@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('content')
 
-@if(auth()->user()->role=='super_admin')
+@if(auth()->user()->role!='pelanggan')
 <div class="page-inner mt--5">
     <div class="row">
         <div class="col-sm-6 col-md-3">
@@ -157,6 +157,51 @@
                                 <h4 class="card-title">{{ count($data_selesai) }}</h4>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@else
+<div class="page-inner mt-2">
+    <div class="row">
+
+        <div class="col-sm-6 col-md-3">
+            <div class="card card-stats card-round" style="background-color: #d4ffe1;">
+                <div class="card-body">
+                    <div class="d-flex align-content-center justify-content-center">
+                        <h2 class="text-success"><strong class="mr-2">{{ $jumlah_mesin }}</strong><small>Transaksi Berhasil</small></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-3">
+            <div class="card card-stats card-round" style="background-color: #fffed4;">
+                <div class="card-body">
+                    <div class="d-flex align-content-center justify-content-center">
+                        <h2 class="text-warning"><strong class="mr-2">{{ $jumlah_mesin }}</strong><small>Transaksi Menunggu</small></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-3">
+            <div class="card card-stats card-round" style="background-color: #cfe3fa;">
+                <div class="card-body">
+                    <div class="d-flex align-content-center justify-content-center">
+                        <h2 class="text-primary"><strong class="mr-2">{{ $jumlah_mesin }}</strong><small>Transaksi Dibuat</small></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-3">
+            <div class="card card-stats card-round" style="background-color: #facfcf;">
+                <div class="card-body">
+                    <div class="d-flex align-content-center justify-content-center">
+                        <h2 class="text-danger"><strong class="mr-2">{{ $jumlah_mesin }}</strong><small>Transaksi Berjalan</small></h2>
                     </div>
                 </div>
             </div>

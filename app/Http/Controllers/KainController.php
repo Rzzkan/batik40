@@ -52,11 +52,13 @@ class KainController extends Controller
     {
         $this->validate($request, [
             'inpNama' => 'required',
+            'inpBerat' => 'required',
             'inpBiaya' => 'required'
         ]);
 
         $kain = Kain::create([
             'nama' => $request->inpNama,
+            'berat' => $request->inpBerat,
             'biaya' => $request->inpBiaya
         ]);
 
@@ -104,10 +106,12 @@ class KainController extends Controller
     {
         $this->validate($request, [
             'inpNama' => 'required',
+            'inpBerat' => 'required',
             'inpBiaya' => 'required'
         ]);
 
         $dataUp['nama'] = $request->inpNama;
+        $dataUp['berat'] = $request->inpBerat;
         $dataUp['biaya'] = $request->inpBiaya;
 
         $kain = Kain::findOrFail($id);
