@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HasilDesainModel;
 use App\Models\Kain;
 use App\Models\Mesin;
 use App\Models\Teknik;
@@ -30,7 +31,16 @@ class DashboardController extends Controller
         $data_proses = Transaksi::where('status', '=', 'proses')->get();
         $data_selesai = Transaksi::where('status', '=', 'selesai')->get();
 
+        $transaksi_selesai = Transaksi::where('status_pengiriman', '=', 'selesai')->where('id_user', auth()->user()->id)->get();
+        $pesanan_menunggu = Transaksi::where('status_pengiriman', '=', 'validasi')->where('id_user', auth()->user()->id)->get();
+        $desain_dibuat = HasilDesainModel::where('id_customer', auth()->user()->id)->get();
+        $pesanan_berjalan = Transaksi::where('status_pengiriman', '=', 'diproses')->where('id_user', auth()->user()->id)->get();
+
         return view('content.dashboard', compact(
+            'transaksi_selesai',
+            'pesanan_menunggu',
+            'desain_dibuat',
+            'pesanan_berjalan',
             'data_antrian',
             'data_menunggu',
             'data_proses',
