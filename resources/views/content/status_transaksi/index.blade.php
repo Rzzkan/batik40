@@ -68,13 +68,13 @@
                                         @endif
                                     </td>
                                     <td class="align-top">
-                                        <button class="col btn btn-sm " @if($dt->status_pengiriman!='validasi' ) hidden @endif><i class="fa fa-check-square mr-2"> </i> Validasi</button>
-                                        <button class="col btn btn-sm " @if($dt->status_pengiriman!='belum_dibayar' ) hidden @endif><i class="fas fa-credit-card mr-2"> </i> Belum Dibayar</button>
-                                        <button class="col btn btn-sm " @if($dt->status_pengiriman!='diproses' ) hidden @endif><i class="fa fa-hourglass-start mr-2"> </i> Diproses</button>
-                                        <button class="col btn btn-sm " @if($dt->status_pengiriman!='dikemas' ) hidden @endif><i class="fas fa-shopping-bag mr-2"> </i> Dikemas</button>
-                                        <button class="col btn btn-sm " @if($dt->status_pengiriman!='dikirim' ) hidden @endif><i class="fa fa-truck mr-2"> </i> Dikirim</button>
-                                        <button class="col btn btn-sm " @if($dt->status_pengiriman!='selesai' ) hidden @endif><i class="fas fa-people-carry mr-2"> </i> Selesai</button>
-                                        <button class="col btn btn-sm " @if($dt->status_pengiriman!='dibatalkan' ) hidden @endif><i class="fas fa-window-close mr-2"> </i> Dibatalkan</button>
+                                        <button class="col btn btn-sm btn-info" @if($dt->status_pengiriman!='validasi' ) hidden @endif><i class="fa fa-check-square mr-2"> </i> Validasi</button>
+                                        <button class="col btn btn-sm btn-info" @if($dt->status_pengiriman!='belum_dibayar' ) hidden @endif><i class="fas fa-credit-card mr-2"> </i> Belum Dibayar</button>
+                                        <button class="col btn btn-sm btn-info" @if($dt->status_pengiriman!='diproses' ) hidden @endif><i class="fa fa-hourglass-start mr-2"> </i> Diproses</button>
+                                        <button class="col btn btn-sm btn-info" @if($dt->status_pengiriman!='dikemas' ) hidden @endif><i class="fas fa-shopping-bag mr-2"> </i> Dikemas</button>
+                                        <button class="col btn btn-sm btn-info" @if($dt->status_pengiriman!='dikirim' ) hidden @endif><i class="fa fa-truck mr-2"> </i> Dikirim</button>
+                                        <button class="col btn btn-sm btn-info" @if($dt->status_pengiriman!='selesai' ) hidden @endif><i class="fas fa-people-carry mr-2"> </i> Selesai</button>
+                                        <button class="col btn btn-sm btn-info" @if($dt->status_pengiriman!='dibatalkan' ) hidden @endif><i class="fas fa-window-close mr-2"> </i> Dibatalkan</button>
                                     </td>
                                     <td class="align-top">
                                         <div class="dropdown">

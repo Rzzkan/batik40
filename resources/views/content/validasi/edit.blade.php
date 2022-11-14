@@ -20,6 +20,10 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    @foreach($validasi->produks as $dt_produk)
+                    {{ $dt_produk->nama_batik }}
+                    <br>
+                    @endforeach
                     <form class="col" method="POST" action="{{ route('validasi.update', $validasi->id) }}">
                         @csrf
                         @method('PUT')

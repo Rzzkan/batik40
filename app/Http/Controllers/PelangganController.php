@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CustomerModel;
 use App\Models\Pelanggan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -119,6 +120,7 @@ class PelangganController extends Controller
                 if ($request->inpPassBaru != '') {
                     if ($request->inpPassBaru == $request->inpPassConfirm) {
                         $dataUp['password'] = Hash::make($request->inpPassBaru);
+                        $dataUpCustomer['password'] = $request->inpPassBaru;
                     } else {
                         return redirect()->route('pelanggan.edit',  $id)->with(['danger' => 'Konfirmasi Password Salah']);
                     }
@@ -127,6 +129,13 @@ class PelangganController extends Controller
                 return redirect()->route('pelanggan.edit',  $id)->with(['danger' => 'Password Lama Salah']);
             }
         }
+
+        $dataUpCustomer['nama'] = $request->inpNama;
+        $dataUpCustomer['email'] = $request->inpEmail;
+        $dataUpCustomer['no_telp'] = $request->inpNo;
+
+        $customer = CustomerModel::findOrFail($id);
+        $customer->update($dataUpCustomer);
 
         $dataUp['name'] = $request->inpNama;
         $dataUp['email'] = $request->inpEmail;

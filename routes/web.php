@@ -19,6 +19,7 @@ use App\Http\Controllers\ProduksiController;
 use App\Http\Controllers\ProsesController;
 use App\Http\Controllers\RajaOngkirController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StatusMesinController;
 use App\Http\Controllers\StatusTransaksiController;
 use App\Http\Controllers\WarnaController;
@@ -58,6 +59,7 @@ Route::resource('validasi', ValidasiController::class)->middleware(['checkRole:s
 Route::resource('antrian', AntrianController::class)->middleware(['checkRole:super_admin,pengelola']);
 Route::resource('produksi', ProduksiController::class)->middleware(['checkRole:super_admin,pengelola']);
 Route::resource('status_transaksi', StatusTransaksiController::class)->middleware(['checkRole:super_admin,pengelola']);
+Route::resource('setting', SettingController::class)->middleware(['checkRole:super_admin']);
 
 Route::resource('panduan', PanduanController::class)->middleware(['checkRole:pelanggan']);
 Route::resource('motif', MotifController::class)->middleware(['checkRole:pelanggan']);

@@ -128,25 +128,25 @@
                                                 <label for="country">Expedisi</label>
                                                 <select class="form-control" id="expedisi-dropdown" name="inpExpedisi">
                                                     <option value="">Pilih Expedisi</option>
-                                                    <option value="{{ '1280---' . $dto->id_kec .'---'. $dto->berat . '---pos' }}">pos</option>
-                                                    <option value="{{ '1280---' . $dto->id_kec .'---'. $dto->berat . '---tiki' }}">tiki</option>
-                                                    <option value="{{ '1280---' . $dto->id_kec .'---'. $dto->berat . '---jne' }}">jne</option>
-                                                    <option value="{{ '1280---' . $dto->id_kec .'---'. $dto->berat . '---pcp' }}">pcp</option>
-                                                    <option value="{{ '1280---' . $dto->id_kec .'---'. $dto->berat . '---esl' }}">esl</option>
-                                                    <option value="{{ '1280---' . $dto->id_kec .'---'. $dto->berat . '---rpx' }}">rpx</option>
-                                                    <option value="{{ '1280---' . $dto->id_kec .'---'. $dto->berat . '---pandu' }}">pandu</option>
-                                                    <option value="{{ '1280---' . $dto->id_kec .'---'. $dto->berat . '---wahana' }}">wahana</option>
-                                                    <option value="{{ '1280---' . $dto->id_kec .'---'. $dto->berat . '---jnt' }}">jnt</option>
-                                                    <option value="{{ '1280---' . $dto->id_kec .'---'. $dto->berat . '---pahala' }}">pahala</option>
-                                                    <option value="{{ '1280---' . $dto->id_kec .'---'. $dto->berat . '---cahaya' }}">cahaya</option>
-                                                    <option value="{{ '1280---' . $dto->id_kec .'---'. $dto->berat . '---sap' }}">sap</option>
-                                                    <option value="{{ '1280---' . $dto->id_kec .'---'. $dto->berat . '---jet' }}">jet</option>
-                                                    <option value="{{ '1280---' . $dto->id_kec .'---'. $dto->berat . '---indah' }}">indah</option>
-                                                    <option value="{{ '1280---' . $dto->id_kec .'---'. $dto->berat . '---dse' }}">dse</option>
-                                                    <option value="{{ '1280---' . $dto->id_kec .'---'. $dto->berat . '---slis' }}">slis</option>
-                                                    <option value="{{ '1280---' . $dto->id_kec .'---'. $dto->berat . '---first' }}">first</option>
-                                                    <option value="{{ '1280---' . $dto->id_kec .'---'. $dto->berat . '---ncs' }}">ncs</option>
-                                                    <option value="{{ '1280---' . $dto->id_kec .'---'. $dto->berat . '---star' }}">star</option>
+                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---pos' }}">pos</option>
+                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---tiki' }}">tiki</option>
+                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---jne' }}">jne</option>
+                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---pcp' }}">pcp</option>
+                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---esl' }}">esl</option>
+                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---rpx' }}">rpx</option>
+                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---pandu' }}">pandu</option>
+                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---wahana' }}">wahana</option>
+                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---jnt' }}">jnt</option>
+                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---pahala' }}">pahala</option>
+                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---cahaya' }}">cahaya</option>
+                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---sap' }}">sap</option>
+                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---jet' }}">jet</option>
+                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---indah' }}">indah</option>
+                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---dse' }}">dse</option>
+                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---slis' }}">slis</option>
+                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---first' }}">first</option>
+                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---ncs' }}">ncs</option>
+                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---star' }}">star</option>
                                                 </select>
                                             </div>
 

@@ -68,7 +68,7 @@ class ValidasiController extends Controller
         $title = 'Validasi Harga';
         $sub_title = 'Edit Validasi Harga!';
 
-        $validasi = Transaksi::find($id);
+        $validasi = Transaksi::with('produks')->find($id);
         return view('content.validasi.edit', compact(
             'validasi',
             'title',

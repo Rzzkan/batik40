@@ -24,8 +24,7 @@ class Transaksi extends Model
             ->leftJoin('tbl_hasilbatik', 'tbl_hasilbatik.hasilbatik_id', '=', 'keranjang.id_hasil_desain')
             ->leftJoin('warna', 'warna.id', '=', 'keranjang.id_warna')
             ->leftJoin('teknik', 'teknik.id', '=', 'keranjang.id_teknik')
-            ->leftJoin('kain', 'kain.id', '=', 'keranjang.id_kain')
-            ->where('id_user', auth()->user()->id);
+            ->leftJoin('kain', 'kain.id', '=', 'keranjang.id_kain');
     }
 
     public function log_proses()

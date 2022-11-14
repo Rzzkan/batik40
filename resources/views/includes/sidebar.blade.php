@@ -111,7 +111,7 @@
 
                 <li class="nav-item @if($title == 'Status Transaksi') active @endif ">
                     <a href="{{ route('status_transaksi.index') }}">
-                        <i class="fas fa-sliders-h"></i>
+                        <i class="fas fa-coins"></i>
                         <p>Status Transaksi</p>
                     </a>
                 </li>
@@ -139,6 +139,13 @@
                     <a href="{{ route('pelanggan.index') }}">
                         <i class="fas fa-users"></i>
                         <p>Pelanggan</p>
+                    </a>
+                </li>
+
+                <li class="nav-item @if($title == 'Setting') active @endif ">
+                    <a href="{{ route('setting.index') }}">
+                        <i class="fas fa-cogs"></i>
+                        <p>Setting</p>
                     </a>
                 </li>
 
@@ -186,7 +193,7 @@
                                 </a>
                             </li>
                             <li class="@if($title == 'Pelanggan') active @endif ">
-                                <a href="#">
+                                <a href="{{ $data_setting->url_desain }}" target="_blank">
                                     <span class="sub-item">Buat Desain</span>
                                 </a>
                             </li>
@@ -228,7 +235,7 @@
                 </li>
 
                 <li class="nav-item @if($title == 'Customer Service') active @endif ">
-                    <a href="#">
+                    <a href="https://api.whatsapp.com/send?phone={{ $data_setting->no_toko }}" target="_blank">
                         <i class="fas fa-sliders-h"></i>
                         <p>Customer Service</p>
                     </a>
