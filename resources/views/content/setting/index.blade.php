@@ -49,6 +49,26 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
+                        <strong><i class="far fa-hdd mr-2"> </i> Url Hasil Folder Desain - ({{ $setting->base_url_img_desain_batik }})</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 form-group input-group-sm">
+                                <label for="inpUrlDesain">Url Hasil Folder Desain </label>
+                                <input type="text" class="form-control" placeholder="0" id="inpUrlHasilDesain" name="inpUrlHasilDesain" value="{{ $setting->base_url_img_desain_batik }}">
+                            </div>
+
+                            <div class="col-12 form-group input-group-sm">
+                                <input class="btn btn-primary btn-sm" type="submit" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
                         <strong><i class="far fa-hdd mr-2"> </i> Lokasi Toko: </strong>
                     </div>
                     <div class="card-body">

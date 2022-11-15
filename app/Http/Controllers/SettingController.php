@@ -115,6 +115,7 @@ class SettingController extends Controller
             'inpUrlDesain' => 'required'
         ]);
 
+        $dataUp['base_url_img_desain_batik'] = $request->inpUrlHasilDesain;
         $dataUp['url_desain'] = $request->inpUrlDesain;
         $dataUp['no_toko'] = $request->inpNomor;
 

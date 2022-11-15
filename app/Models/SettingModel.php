@@ -18,6 +18,7 @@ class SettingModel extends Model
         'nama_kab_toko',
         'id_prov_toko',
         'nama_prov_toko',
+        'base_url_img_desain_batik',
         'url_desain',
         'no_toko'
     ];

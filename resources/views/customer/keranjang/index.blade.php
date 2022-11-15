@@ -32,7 +32,7 @@
 
                         <div class="row">
                             <div class="col-3">
-                                <img src="{{ asset('customer/img') . '/' . $dt->file_batik }}" width="100%" style="border: 1px solid gray;">
+                                <img src="{{ $data_setting->base_url_img_desain_batik . '/' . $dt->file_batik }}" width="100%" style="border: 1px solid gray;">
                             </div>
                             <div class="col">
                                 <strong>{{ strtoupper($dt->nama_batik) }}</strong>
@@ -86,7 +86,7 @@
 
                                                     <div class="row">
                                                         <div class="col-12 text-center">
-                                                            <img src="{{ asset('customer/img') . '/' . $dt->file_batik }}" height="80px" style="border: 1px solid gray;">
+                                                            <img src="{{ $data_setting->base_url_img_desain_batik . '/' . $dt->file_batik }}" height="80px" style="border: 1px solid gray;">
 
                                                             <p>
                                                                 {{ "Warna: " . $dt->nama_warna . ", teknik: " . $dt->nama_teknik . ", kain: " . $dt->nama_kain }}
