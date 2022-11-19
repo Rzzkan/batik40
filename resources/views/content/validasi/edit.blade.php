@@ -82,6 +82,7 @@
                                 <input type="number" class="form-control" placeholder="" id="inpTotal" name="inpTotal" value="{{ $validasi->total }}">
                             </div>
 
+                            @if($validasi->status == 'menunggu')
                             <div class="col-md-12 form-group input-group-sm">
                                 <label for="inpKode">Validasi Harga</label>
                                 <br>
@@ -107,6 +108,11 @@
                             <div class="col-md-6 form-group input-group-sm">
                                 <input class="btn btn-primary btn-sm" type="submit" class="form-control">
                             </div>
+                            @else
+                            <div class="col-md-6 form-group input-group-sm">
+                                - Pesanan telah diproduksi.
+                            </div>
+                            @endif
                         </div>
                     </form>
                 </div>

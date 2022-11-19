@@ -193,9 +193,18 @@
                                 </a>
                             </li>
                             <li class="@if($title == 'Pelanggan') active @endif ">
-                                <a href="{{ $data_setting->url_desain }}" target="_blank">
+                                <a href="#" onclick="$('#subsdmit').trigger('click');">
                                     <span class="sub-item">Buat Desain</span>
                                 </a>
+
+                                <form target="_blank" id="form-desain" action="{{ $data['data_setting']->url_desain . '/processlogin.php' }}" method="post" class="d-none" hidden>
+                                    @csrf
+                                    @method('post')
+
+                                    <input type="text" id="username" class="fadeIn second" name="usermail" placeholder="Email" value="{{ auth()->user()->email }}">
+                                    <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" value="{{ \App\Models\CustomerModel::where(['id' => auth()->user()->id])->first()->password; }}">
+                                    <input type="submit" id="subsdmit" name="submit" class="fadeIn fourth" value="submit">
+                                </form>
                             </li>
                             <li class="@if($title == 'Hasil Desain') active @endif ">
                                 <a href="{{ route('hasil_desain.index') }}">
@@ -235,7 +244,7 @@
                 </li>
 
                 <li class="nav-item @if($title == 'Customer Service') active @endif ">
-                    <a href="https://api.whatsapp.com/send?phone={{ $data_setting->no_toko }}" target="_blank">
+                    <a href="https://api.whatsapp.com/send?phone={{ $data['data_setting']->no_toko }}" target="_blank">
                         <i class="fas fa-sliders-h"></i>
                         <p>Customer Service</p>
                     </a>
