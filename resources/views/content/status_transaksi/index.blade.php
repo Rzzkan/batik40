@@ -17,16 +17,13 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="basic-datatables" style="white-space: nowrap" class="table table-bordered table-hover">
-                            <thead class="thead-light">
+                        <table id="basic-datatables" style="white-space: nowrap" class="table table-bordered">
+                            <thead class="">
                                 <tr>
-                                    <th>No.</th>
-                                    <th>Kode Transaksi</th>
-                                    <th>Pemesan</th>
-                                    <th>Pengiriman</th>
-                                    <th>Biaya</th>
-                                    <th>Pembayaran</th>
-                                    <th>Status</th>
+                                    <th>Kode</th>
+                                    <th>Transaksi</th>
+                                    <th>Detail Transaksi</th>
+                                    <th>Pembayaran & Status</th>
                                     <th>Tindakan</th>
                                 </tr>
                             </thead>
@@ -36,27 +33,13 @@
                                 @endphp
                                 @forelse ($transaksi as $dt)
                                 <tr>
-                                    <td class="align-top">{{ $no++ }}</td>
-                                    <td class="align-top">{{ "BTK" . $dt->id }}</td>
+                                    <td class="align-top">{{ $no++ . ". BTK" . $dt->id }}RK</td>
                                     <td class="align-top">
-                                        <strong>Akun: </strong><br>{{ $dt->nama_user .' | '. $dt->email_user }}
-                                        <hr>
-                                        <strong>Penerima: </strong><br>{{ $dt->alamat->penerima .' | '. $dt->alamat->no_hp }}
+                                        <strong>Akun : {{ $dt->email_user }} </strong>
+                                        <br><small>Penerima : {{ $dt->alamat->penerima .' | '. $dt->alamat->no_hp }}</small>
                                     </td>
                                     <td class="align-top">
-                                        <strong>Resi: </strong><br>{{ $dt->resi }}
-                                        <hr>
-                                        <strong>Expedisi: </strong><br>{{ $dt->ro_description .' ('. $dt->ro_service .') | '. $dt->ro_etd .' hari | '. $dt->ro_name }}
-                                        <hr>
-                                        <strong>Alamat: </strong><br>
-                                        <button class="btn btn-primary btn-sm mb-2" data-toggle="modal" data-target="#alamat{{ $dt->id }}"><i class="fas fa-map-marked-alt mr-2"> </i> Detail Alamat</button>
-                                    </td>
-                                    <td class="align-top">
-                                        <strong>Produk: </strong><br>{{ "Rp " . number_format($dt->total,2,',','.') }}
-                                        <hr>
-                                        <strong>Ongkir: </strong><br>{{ "Rp " . number_format($dt->ro_cost,2,',','.') }}
-                                        <hr>
-                                        <strong>Total: </strong><br>{{ "Rp " . number_format(($dt->total + $dt->ro_cost),2,',','.') }}
+                                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#detail{{ $dt->id }}"><i class="fas fa-credit-card mr-2"> </i> Lihat Detail </button>
                                     </td>
                                     <td class="align-top">
                                         @if($dt->sudah_dibayar == 0)
@@ -66,16 +49,17 @@
                                         @else
                                         <button class="btn btn-success btn-sm disabled"><i class="fas fa-credit-card mr-2"> </i> Sudah Dibayar</button>
                                         @endif
+
+
+                                        <button class="btn btn-sm btn-info" @if($dt->status_pengiriman!='validasi' ) hidden @endif><i class="fa fa-check-square mr-2"> </i> Validasi</button>
+                                        <button class="btn btn-sm btn-info" @if($dt->status_pengiriman!='belum_dibayar' ) hidden @endif><i class="fas fa-credit-card mr-2"> </i> Belum Dibayar</button>
+                                        <button class="btn btn-sm btn-info" @if($dt->status_pengiriman!='diproses' ) hidden @endif><i class="fa fa-hourglass-start mr-2"> </i> Diproses</button>
+                                        <button class="btn btn-sm btn-info" @if($dt->status_pengiriman!='dikemas' ) hidden @endif><i class="fas fa-shopping-bag mr-2"> </i> Dikemas</button>
+                                        <button class="btn btn-sm btn-info" @if($dt->status_pengiriman!='dikirim' ) hidden @endif><i class="fa fa-truck mr-2"> </i> Dikirim</button>
+                                        <button class="btn btn-sm btn-info" @if($dt->status_pengiriman!='selesai' ) hidden @endif><i class="fas fa-people-carry mr-2"> </i> Selesai</button>
+                                        <button class="btn btn-sm btn-info" @if($dt->status_pengiriman!='dibatalkan' ) hidden @endif><i class="fas fa-window-close mr-2"> </i> Dibatalkan</button>
                                     </td>
-                                    <td class="align-top">
-                                        <button class="col btn btn-sm btn-info" @if($dt->status_pengiriman!='validasi' ) hidden @endif><i class="fa fa-check-square mr-2"> </i> Validasi</button>
-                                        <button class="col btn btn-sm btn-info" @if($dt->status_pengiriman!='belum_dibayar' ) hidden @endif><i class="fas fa-credit-card mr-2"> </i> Belum Dibayar</button>
-                                        <button class="col btn btn-sm btn-info" @if($dt->status_pengiriman!='diproses' ) hidden @endif><i class="fa fa-hourglass-start mr-2"> </i> Diproses</button>
-                                        <button class="col btn btn-sm btn-info" @if($dt->status_pengiriman!='dikemas' ) hidden @endif><i class="fas fa-shopping-bag mr-2"> </i> Dikemas</button>
-                                        <button class="col btn btn-sm btn-info" @if($dt->status_pengiriman!='dikirim' ) hidden @endif><i class="fa fa-truck mr-2"> </i> Dikirim</button>
-                                        <button class="col btn btn-sm btn-info" @if($dt->status_pengiriman!='selesai' ) hidden @endif><i class="fas fa-people-carry mr-2"> </i> Selesai</button>
-                                        <button class="col btn btn-sm btn-info" @if($dt->status_pengiriman!='dibatalkan' ) hidden @endif><i class="fas fa-window-close mr-2"> </i> Dibatalkan</button>
-                                    </td>
+
                                     <td class="align-top">
                                         <div class="dropdown">
                                             <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown">
@@ -89,8 +73,8 @@
                                         </div>
                                     </td>
 
-                                    <div class="modal fade" id="alamat{{ $dt->id }}">
-                                        <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal fade" id="detail{{ $dt->id }}">
+                                        <div class="modal-dialog modal-dialog-centered modal-lg">
                                             <div class="modal-content">
 
                                                 <div class="modal-header">
@@ -99,6 +83,17 @@
                                                 </div>
 
                                                 <div class="modal-body">
+                                                    <strong>Produk: </strong><br>{{ "Rp " . number_format($dt->total,2,',','.') }}
+                                                    <hr>
+                                                    <strong>Ongkir: </strong><br>{{ "Rp " . number_format($dt->ro_cost,2,',','.') }}
+                                                    <hr>
+                                                    <strong>Total: </strong><br>{{ "Rp " . number_format(($dt->total + $dt->ro_cost),2,',','.') }}
+                                                    <hr>
+                                                    <strong>Resi: </strong><br>{{ $dt->resi }}
+                                                    <hr>
+                                                    <strong>Expedisi: </strong><br>{{ $dt->ro_description .' ('. $dt->ro_service .') | '. $dt->ro_etd .' hari | '. $dt->ro_name }}
+                                                    <hr>
+                                                    <strong>Alamat: </strong><br>
                                                     {{ $dt->alamat->alamat .', '. $dt->alamat->nama_kec .', '. $dt->alamat->nama_kab .', '. $dt->alamat->nama_prov }}
                                                 </div>
                                             </div>

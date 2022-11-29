@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Antrian;
 use App\Models\Log_proses;
+use App\Models\Mesin;
 use App\Models\Proses;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
@@ -23,6 +25,7 @@ class ProduksiController extends Controller
         $produksi = DB::table('transaksi')
             ->select('transaksi.*', 'proses.nama as nama_proses')
             ->leftJoin('proses', 'transaksi.id_proses', '=', 'proses.id')
+            ->orderBy('id', 'DESC')
             ->get();
 
         return view('content.produksi.index', compact(
@@ -117,6 +120,7 @@ class ProduksiController extends Controller
 
         if ($request->inpSelesai == '1') {
             $dataUp['status'] = 'selesai';
+            $dataUpAntrian['status'] = 0;
         }
 
         $log_proses = Log_proses::create([
@@ -124,8 +128,29 @@ class ProduksiController extends Controller
             'id_proses' => $request->inpIdProses
         ]);
 
+        $id_antrian =  Antrian::where('id_transaksi', $id)->first()->id;
+
         $produksi = Transaksi::findOrFail($id);
         $produksi->update($dataUp);
+
+        $produksiAntrian = Antrian::findOrFail($id_antrian);
+        $produksiAntrian->update($dataUpAntrian);
+
+        $jumlah_antrian = DB::table('mesin')
+            ->select('mesin.*', DB::raw('COALESCE(SUM(antrian.status),0) as jumlah_antrian'))
+            ->leftJoin('antrian', 'mesin.id', '=', 'antrian.id_mesin')
+            ->where('mesin.id', $produksiAntrian->id_mesin)
+            ->first();
+
+        if ($jumlah_antrian->jumlah_antrian > 0) {
+            $dataUpMesin['status'] = 'Bekerja';
+        } else {
+            $dataUpMesin['status'] = 'Idle';
+        }
+
+        $mesin = Mesin::findOrFail($produksiAntrian->id_mesin);
+        $mesin->update($dataUpMesin);
+
         return redirect()->route('produksi.edit', $id)->with(['success' => 'Data Berhasil Disimpan']);
     }
 

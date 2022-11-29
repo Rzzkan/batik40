@@ -70,9 +70,15 @@ class AntrianController extends Controller
         ]);
 
         $dataUp['status'] = 'proses';
+        $dataUp['status_pengiriman'] = 'diproses';
 
         $transaksi = Transaksi::findOrFail($request->inpIdTransaksi);
         $transaksi->update($dataUp);
+
+        $dataUpMesin['status'] = 'Bekerja';
+
+        $mesin = Mesin::findOrFail($request->inpIdMesin);
+        $mesin->update($dataUpMesin);
 
         return redirect()->route('antrian.show', $request->inpIdMesin)->with(['success' => 'Data Berhasil Disimpan']);
     }
@@ -93,9 +99,10 @@ class AntrianController extends Controller
             ->select('antrian.*', 'transaksi.status as status_transaksi')
             ->leftJoin('transaksi', 'antrian.id_transaksi', '=', 'transaksi.id')
             ->where('antrian.id_mesin', '=', $id)
+            ->orderBy('id', 'DESC')
             ->get();
 
-        $transaksi_siap = Transaksi::All()->where('status', '=', 'siap_diantrikan');
+        $transaksi_siap = Transaksi::where('status', '=', 'siap_diantrikan')->orderBy('id', 'DESC')->get();
         $detail_mesin = Mesin::where('id', '=', $id)->first();
 
         return view('content.antrian.detail', compact(
@@ -152,6 +159,22 @@ class AntrianController extends Controller
 
         $antrian = Antrian::findOrFail($id);
         $antrian->update($dataUp);
+
+        $jumlah_antrian = DB::table('mesin')
+            ->select('mesin.*', DB::raw('COALESCE(SUM(antrian.status),0) as jumlah_antrian'))
+            ->leftJoin('antrian', 'mesin.id', '=', 'antrian.id_mesin')
+            ->where('mesin.id', $antrian->id_mesin)
+            ->first();
+
+        if ($jumlah_antrian->jumlah_antrian > 0) {
+            $dataUpMesin['status'] = 'Bekerja';
+        } else {
+            $dataUpMesin['status'] = 'Idle';
+        }
+
+        $mesin = Mesin::findOrFail($antrian->id_mesin);
+        $mesin->update($dataUpMesin);
+
         return redirect()->route('antrian.show', $antrian->id_mesin)->with(['success' => 'Data Berhasil Disimpan']);
     }
 

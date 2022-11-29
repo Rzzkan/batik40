@@ -17,7 +17,7 @@ class ValidasiController extends Controller
         $title = 'Validasi Harga';
         $sub_title = 'Kelola Validasi Harga!';
 
-        $validasi = Transaksi::all();
+        $validasi = Transaksi::orderBy('id', 'DESC')->get();
 
         return view('content.validasi.index', compact(
             'validasi',
@@ -89,6 +89,12 @@ class ValidasiController extends Controller
             'inpTotal' => 'required',
             'inpStatus' => 'required'
         ]);
+
+        if ($request->inpStatus == 'batal') {
+            $dataUp['status_pengiriman'] = 'dibatalkan';
+        } else {
+            $dataUp['status_pengiriman'] = 'belum_dibayar';
+        }
 
         $dataUp['total'] = $request->inpTotal;
         $dataUp['status'] = $request->inpStatus;

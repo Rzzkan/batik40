@@ -16,7 +16,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-head-row">
-                        <strong><i class="far fa-hdd mr-2"> </i> Form Status Transaksi - Edit BTK{{ $transaksi->id }} </strong><a href="{{ url()->previous() }}" class="btn btn-danger btn-sm ml-auto"><i class="fas fa-arrow-left mr-2"> </i> Back</a>
+                        <strong><i class="far fa-hdd mr-2"> </i> Form Status Transaksi - Edit BTK{{ $transaksi->id }}RK </strong><a href="{{ url()->previous() }}" class="btn btn-danger btn-sm ml-auto"><i class="fas fa-arrow-left mr-2"> </i> Back</a>
                     </div>
                 </div>
                 <div class="card-body">

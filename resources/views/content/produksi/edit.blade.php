@@ -16,7 +16,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-head-row">
-                        <strong><i class="fas fa-clipboard-check mr-2"> </i>Perbarui Proses Produksi </strong><a href="{{ url()->previous() }}" class="btn btn-danger btn-sm ml-auto"><i class="fas fa-arrow-left mr-2"> </i> Back</a>
+                        <strong><i class="fas fa-clipboard-check mr-2"> </i>Perbarui Proses Produksi BTK{{ $produksi->id }}RK </strong><a href="{{ url()->previous() }}" class="btn btn-danger btn-sm ml-auto"><i class="fas fa-arrow-left mr-2"> </i> Back</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -35,7 +35,7 @@
                             </div>
 
                             <div class="col-md-12 form-group input-group-sm">
-                                <label for="inpKode">Proses Produksi</label>
+                                <label for="inpKode">Pilih Proses Produksi</label>
                                 <br>
                                 @foreach($proses as $dt)
                                 <div class="form-check-inline">
@@ -47,11 +47,11 @@
                             </div>
 
                             <div class="col-md-12 form-check">
-                                <label for="inpSelesai">Pesanan Selesai</label>
+                                <label for="inpSelesai">Produksi Selesai</label>
                                 <br>
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="checkbox" value="1" id="inpSelesai" name="inpSelesai">
-                                    <span class="form-check-sign">Centang disini jika pesanan selesai!</span>
+                                    <span class="form-check-sign">Centang disini jika produksi selesai!</span>
                                 </label>
                             </div>
 

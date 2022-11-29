@@ -28,6 +28,7 @@ class TransaksiController extends Controller
             ->leftJoin('alamat', 'alamat.id', '=', 'transaksi.id_alamat')
             ->where('transaksi.id_user', auth()->user()->id)
             ->where('transaksi.status_pengiriman', $posisi)
+            ->orderBy('id', 'DESC')
             ->with('produks', 'log_proses')->get();
 
         return view('customer.transaksi.index', compact(
@@ -68,6 +69,8 @@ class TransaksiController extends Controller
         $transaksi = Transaksi::create([
             'total' => $request->inpTotal,
             'id_alamat' => $request->inpAlamat,
+            'status_pengiriman' => 'validasi',
+            'id_user' => auth()->user()->id,
             'berat' => $request->inpBerat
         ]);
 
@@ -85,7 +88,7 @@ class TransaksiController extends Controller
             }
         }
 
-        // return redirect()->route('proses.index')->with(['success' => 'Data Berhasil Disimpan']);
+        return redirect()->route('transaksi.index')->with(['success' => 'Data Berhasil Disimpan']);
     }
 
     /**
@@ -104,6 +107,7 @@ class TransaksiController extends Controller
             ->leftJoin('alamat', 'alamat.id', '=', 'transaksi.id_alamat')
             ->where('transaksi.id_user', auth()->user()->id)
             ->where('transaksi.status_pengiriman', $posisi)
+            ->orderBy('id', 'DESC')
             ->with('produks', 'log_proses')->get();
 
         // echo $get_data;
@@ -153,7 +157,7 @@ class TransaksiController extends Controller
         $keranjang = Transaksi::findOrFail($id);
         $keranjang->update($dataUp);
 
-        return redirect()->route('transaksi.index')->with(['success' => 'Data Berhasil Disimpan.']);
+        return redirect()->route('transaksi.show', $keranjang->status_pengiriman)->with(['success' => 'Data Berhasil Disimpan.']);
     }
 
     /**

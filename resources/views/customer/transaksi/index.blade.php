@@ -42,7 +42,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-head-row">
-                        <strong><i class="fas fa-shopping-bag mr-2"> </i> Data Transaksi: BTK{{ $dto->id }}</strong>
+                        <strong><i class="fas fa-shopping-bag mr-2"> </i> Data Transaksi: BTK{{ $dto->id }}RK</strong>
                     </div>
                 </div>
                 <div class="card-body">
@@ -53,7 +53,7 @@
 
                         <div class="row">
                             <div class="col-2">
-                                <img src="{{ $data_setting->base_url_img_desain_batik . '/' . $dt->file_batik }}" width="100%" style="border: 1px solid gray;">
+                                <img src="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->file_batik }}" width="100%" style="border: 1px solid gray;">
                             </div>
                             <div class="col">
                                 <strong>{{ strtoupper($dt->nama_batik) }}</strong>
@@ -81,7 +81,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-head-row">
-                        <strong><i class="fas fa-clipboard-list mr-2"> </i> Data Transaksi: BTK{{ $dto->id }}</strong>
+                        <strong><i class="fas fa-clipboard-list mr-2"> </i> Data Transaksi: BTK{{ $dto->id }}RK</strong>
                     </div>
                 </div>
 
@@ -92,7 +92,7 @@
                     <p class="text-danger">
                         Pesanan anda dalam proses validasi oleh tim kami. Mohon tunggu beberapa saat atau hubungi kami.
                     </p>
-                    <a href="https://api.whatsapp.com/send?phone=081111111111" target="_blank" class="btn btn-sm btn-success"><i class="fab fa-whatsapp mr-2"> </i> Whatsapp</a>
+                    <a href="https://api.whatsapp.com/send?phone={{ $data['data_setting']->no_toko }}" target="_blank" class="btn btn-sm btn-success"><i class="fab fa-whatsapp mr-2"> </i> Whatsapp</a>
                 </div>
                 @endif
 
@@ -128,25 +128,25 @@
                                                 <label for="country">Expedisi</label>
                                                 <select class="form-control" id="expedisi-dropdown" name="inpExpedisi">
                                                     <option value="">Pilih Expedisi</option>
-                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---pos' }}">pos</option>
-                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---tiki' }}">tiki</option>
-                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---jne' }}">jne</option>
-                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---pcp' }}">pcp</option>
-                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---esl' }}">esl</option>
-                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---rpx' }}">rpx</option>
-                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---pandu' }}">pandu</option>
-                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---wahana' }}">wahana</option>
-                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---jnt' }}">jnt</option>
-                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---pahala' }}">pahala</option>
-                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---cahaya' }}">cahaya</option>
-                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---sap' }}">sap</option>
-                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---jet' }}">jet</option>
-                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---indah' }}">indah</option>
-                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---dse' }}">dse</option>
-                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---slis' }}">slis</option>
-                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---first' }}">first</option>
-                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---ncs' }}">ncs</option>
-                                                    <option value="{{ $data_setting->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---star' }}">star</option>
+                                                    <option value="{{ $data['data_setting']->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---pos' }}">pos</option>
+                                                    <option value="{{ $data['data_setting']->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---tiki' }}">tiki</option>
+                                                    <option value="{{ $data['data_setting']->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---jne' }}">jne</option>
+                                                    <option value="{{ $data['data_setting']->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---pcp' }}">pcp</option>
+                                                    <option value="{{ $data['data_setting']->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---esl' }}">esl</option>
+                                                    <option value="{{ $data['data_setting']->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---rpx' }}">rpx</option>
+                                                    <option value="{{ $data['data_setting']->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---pandu' }}">pandu</option>
+                                                    <option value="{{ $data['data_setting']->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---wahana' }}">wahana</option>
+                                                    <option value="{{ $data['data_setting']->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---jnt' }}">jnt</option>
+                                                    <option value="{{ $data['data_setting']->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---pahala' }}">pahala</option>
+                                                    <option value="{{ $data['data_setting']->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---cahaya' }}">cahaya</option>
+                                                    <option value="{{ $data['data_setting']->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---sap' }}">sap</option>
+                                                    <option value="{{ $data['data_setting']->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---jet' }}">jet</option>
+                                                    <option value="{{ $data['data_setting']->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---indah' }}">indah</option>
+                                                    <option value="{{ $data['data_setting']->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---dse' }}">dse</option>
+                                                    <option value="{{ $data['data_setting']->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---slis' }}">slis</option>
+                                                    <option value="{{ $data['data_setting']->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---first' }}">first</option>
+                                                    <option value="{{ $data['data_setting']->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---ncs' }}">ncs</option>
+                                                    <option value="{{ $data['data_setting']->id_kec_toko . '---' . $dto->id_kec .'---'. $dto->berat . '---star' }}">star</option>
                                                 </select>
                                             </div>
 
@@ -168,7 +168,7 @@
 
                     <hr>
 
-                    <strong>Total : </strong>
+                    <strong>Total Harga Fix : </strong>
                     <h4>
                         <strong>
                             {{ "Rp " . number_format(($dto->ro_cost + $dto->total),2,',','.') }}
@@ -206,7 +206,7 @@
                                         @csrf
                                         @method('POST')
                                         <div class="col-12 text-center">
-                                            <strong>Yakin sudah melakukan pembayaran pada produk BTK{{ $dto->id }}? Tekan "Sudah Bayar" agar segera kami proses!</strong>
+                                            <strong>Yakin sudah melakukan pembayaran pada produk BTK{{ $dto->id }}RK? Tekan "Sudah Bayar" agar segera kami proses!</strong>
                                             <div class="col-md-6 form-group input-group-sm" hidden>
                                                 <label for="inpIdTransaksi">ID Bayar</label>
                                                 <input type="text" class="form-control" placeholder="" value="{{ $dto->id }}" id="inpIdTransaksi" name="inpIdTransaksi">
@@ -237,7 +237,7 @@
                                         @csrf
                                         @method('POST')
                                         <div class="col-12 text-center">
-                                            <strong>Yakin akan melakukan pembayaran pada produk BTK{{ $dto->id }}? Tekan "Bayar Sekarang" untuk melakukan pembayaran!</strong>
+                                            <strong>Yakin akan melakukan pembayaran pada produk BTK{{ $dto->id }}RK? Tekan "Bayar Sekarang" untuk melakukan pembayaran!</strong>
                                             <div class="col-md-6 form-group input-group-sm" hidden>
                                                 <label for="inpIdTransaksi">ID Bayar</label>
                                                 <input type="text" class="form-control" placeholder="" value="{{ $dto->id }}" id="inpIdTransaksi" name="inpIdTransaksi">
@@ -268,7 +268,7 @@
                                         @csrf
                                         @method('POST')
                                         <div class="col-12 text-center">
-                                            <strong>Yakin akan membatalkan pesanan pada produk BTK{{ $dto->id }}? Tekan "Batalkan" untuk melakukan pembatalan pesanan!</strong>
+                                            <strong>Yakin akan membatalkan pesanan pada produk BTK{{ $dto->id }}RK? Tekan "Batalkan" untuk melakukan pembatalan pesanan!</strong>
                                             <div class="col-md-6 form-group input-group-sm" hidden>
                                                 <label for="inpIdTransaksi">ID Bayar</label>
                                                 <input type="text" class="form-control" placeholder="" value="{{ $dto->id }}" id="inpIdTransaksi" name="inpIdTransaksi">
@@ -363,7 +363,7 @@
                 <!--dikemas-->
                 @if($posisi == 'dikemas')
                 <div class="card-body">
-                    <strong>Pesanan Sedang Divalidasi!</strong>
+                    <strong>Pesanan Sedang Dikemas!</strong>
                     <p class="text-primary">
                         Pesanan anda dalam proses pengemasan oleh tim kami.
                     </p>
@@ -373,12 +373,12 @@
                 <!--dikirim-->
                 @if($posisi == 'dikirim')
                 <div class="card-body">
-                    <strong>Pesanan Sedang Divalidasi!</strong>
+                    <strong>Pesanan Sedang Dikirim!</strong>
                     <p class="text-primary">
-                        Pesanan anda dalam proses pengemasan oleh tim kami. Tekan tombol dibawah untuk melacak pengiriman.
+                        Pesanan anda dalam proses mengiriman oleh tim kami. Tekan tombol dibawah untuk melacak pengiriman.
                     </p>
 
-                    <strong>Resi: @if($dto->resi != null) $dto->resi @else - @endif <br>Expedisi: {{ $dto->ro_code }}</strong>
+                    <strong>Resi: @if($dto->resi != null) {{ $dto->resi }} @else - @endif <br>Expedisi: {{ $dto->ro_code }}</strong>
                     <br>
                     <a href="https://everpro.id/cek-resi/" target="_blank" class="btn btn-sm btn-success mt-2"><i class="fa fa-truck mr-2"> </i> Lacak Produk</a>
                 </div>
@@ -444,6 +444,8 @@
 
             </div>
         </div>
+
+        <hr>
 
         @endforeach
     </div>

@@ -32,7 +32,7 @@
                         @endphp
                         <div class="row">
                             <div class="col-2">
-                                <img src="{{ $data_setting->base_url_img_desain_batik . '/' . $dt->file_batik }}" width="100%" style="border: 1px solid gray;">
+                                <img src="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->file_batik }}" width="100%" style="border: 1px solid gray;">
                             </div>
                             <div class="col">
                                 <strong>{{ strtoupper($dt->nama_batik) }}</strong>

@@ -23,6 +23,7 @@
                                     <th>No.</th>
                                     <th>Kode Pesanan</th>
                                     <th>Proses</th>
+                                    <th>Status</th>
                                     <th>Tindakan</th>
                                 </tr>
                             </thead>
@@ -35,6 +36,29 @@
                                     <td>{{ $no++ }}</td>
                                     <td>BTK{{ $dt->id }}RK</td>
                                     <td>{{ $dt->nama_proses }}</td>
+                                    <td>
+                                        @if($dt->status == 'menunggu')
+                                        <button type="button" class="btn btn-warning btn-sm">
+                                            <i class="fas fa-exclamation mr-2"> </i> {{ $dt->status }}
+                                        </button>
+                                        @elseif($dt->status == 'siap_diantrikan')
+                                        <button type="button" class="btn btn-secondary btn-sm">
+                                            <i class="fas fa-hourglass-end mr-2"> </i> {{ $dt->status }}
+                                        </button>
+                                        @elseif($dt->status == 'proses')
+                                        <button type="button" class="btn btn-secondary btn-sm">
+                                            <i class="fas fa-hourglass-end mr-2"> </i> {{ $dt->status }}
+                                        </button>
+                                        @elseif($dt->status == 'batal')
+                                        <button type="button" class="btn btn-danger btn-sm">
+                                            <i class="fas fa-ban mr-2"> </i> {{ $dt->status }}
+                                        </button>
+                                        @else
+                                        <button type="button" class="btn btn-success btn-sm">
+                                            <i class="fas fa-check mr-2"> </i> {{ $dt->status }}
+                                        </button>
+                                        @endif
+                                    </td>
                                     <td>
                                         <a href="{{ route('produksi.edit', $dt->id) }}" type="button" class="btn btn-secondary btn-sm">
                                             <i class="fas fa-clipboard-list mr-2"> </i> Perbarui

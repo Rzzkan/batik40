@@ -35,7 +35,7 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $dt->hasilbatik_namakarya }}</td>
                                     <td>
-                                        <img height="80px" src="{{ asset('customer/img') . '/' . $dt->hasilbatik_file }}">
+                                        <img height="80px" src="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->hasilbatik_file }}">
                                     </td>
                                     <td>{{ $dt->hasilbatik_tanggal }}</td>
                                     <td>
