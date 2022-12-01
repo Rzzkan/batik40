@@ -118,9 +118,13 @@ class ProduksiController extends Controller
         // echo $request->inpSelesai;
         // die();
 
+        $id_antrian =  Antrian::where('id_transaksi', $id)->first()->id;
+        $produksiAntrian = Antrian::findOrFail($id_antrian);
+
         if ($request->inpSelesai == '1') {
             $dataUp['status'] = 'selesai';
             $dataUpAntrian['status'] = 0;
+            $produksiAntrian->update($dataUpAntrian);
         }
 
         $log_proses = Log_proses::create([
@@ -128,13 +132,9 @@ class ProduksiController extends Controller
             'id_proses' => $request->inpIdProses
         ]);
 
-        $id_antrian =  Antrian::where('id_transaksi', $id)->first()->id;
-
         $produksi = Transaksi::findOrFail($id);
         $produksi->update($dataUp);
 
-        $produksiAntrian = Antrian::findOrFail($id_antrian);
-        $produksiAntrian->update($dataUpAntrian);
 
         $jumlah_antrian = DB::table('mesin')
             ->select('mesin.*', DB::raw('COALESCE(SUM(antrian.status),0) as jumlah_antrian'))

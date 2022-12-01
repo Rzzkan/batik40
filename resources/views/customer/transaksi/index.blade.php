@@ -233,7 +233,7 @@
                                 </div>
 
                                 <div class="modal-body">
-                                    <form class="col" action="{{ url('bayar_pesanan') }}" method="POST">
+                                    <form class="col" action="{{ url('bayar_pesanan') }}" method="POST" target="_blank">
                                         @csrf
                                         @method('POST')
                                         <div class="col-12 text-center">
