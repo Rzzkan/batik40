@@ -37,9 +37,12 @@
                             <div class="col">
                                 <strong>{{ strtoupper($dt->nama_batik) }}</strong>
                                 <p class="card-text">
-                                    {{ "Warna: " . $dt->nama_warna . ", teknik: " . $dt->nama_teknik . ", kain: " . $dt->nama_kain . " | Jumlah: " . $dt->jumlah }}
+                                    {{ "Warna: " . $dt->nama_warna . ", teknik: " . $dt->nama_teknik . ", kain: " . $dt->nama_kain . " | Jumlah: " . $dt->jumlah . " | ukuran kain: " . $dt->lebar_kain . " cm x " . $dt->tinggi_kain . " cm" }}
                                     <br>
-                                    <strong>{{ "Rp " . number_format((($dt->biaya_mesin + $dt->biaya_warna + $dt->biaya_teknik + $dt->biaya_kain) * $dt->jumlah),2,',','.') }}</strong>
+                                    @php
+                                    $total_harga_produk = ($dt->biaya_mesin + $dt->biaya_warna + $dt->biaya_teknik + $dt->biaya_kain) * $dt->jumlah * (($dt->lebar_kain / 100) * ($dt->tinggi_kain / 100));
+                                    @endphp
+                                    <strong>{{ "Rp " . number_format($total_harga_produk,2,',','.') }}</strong>
                                 </p>
                                 <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#ubah{{ $dt->id }}"><i class="mr-2 fa fa-check-circle" aria-hidden="true"></i> Ubah</button>
                                 <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapuskeranjang{{ $dt->id }}"><i class="mr-2 fas fa-trash-alt" aria-hidden="true"></i> Hapus</button>
@@ -209,7 +212,7 @@
                         @if($dt->status == 1)
 
                         @php
-                        $harga_item = ($dt->biaya_mesin + $dt->biaya_warna + $dt->biaya_teknik + $dt->biaya_kain) * $dt->jumlah;
+                        $harga_item = $total_harga_produk;
                         $total = $total + $harga_item;
                         $berat = $berat + ($dt->berat_kain * $dt->jumlah);
                         $id_ker = $id_ker . "--" . $dt->id;
@@ -253,7 +256,7 @@
                                                 <input type="number" class="form-control" placeholder="" id="inpBerat" name="inpBerat" value="{{ $berat }}">
                                             </div>
 
-                                            <div class="col-md-6 form-group input-group-sm" hidden>
+                                            <div class="col-md-6 form-group input-group-sm">
                                                 <input type="number" class="form-control" placeholder="" id="inpTotal" name="inpTotal" value="{{ $total }}">
                                             </div>
 

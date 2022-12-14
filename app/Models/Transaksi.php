@@ -20,7 +20,20 @@ class Transaksi extends Model
     public function produks()
     {
         return $this->hasMany(KeranjangModel::class, 'id_transaksi', 'id')
-            ->select('keranjang.*', 'tbl_hasilbatik.hasilbatik_file as file_batik', 'tbl_hasilbatik.hasilbatik_namakarya as nama_batik', 'warna.nama as nama_warna', 'warna.biaya as biaya_warna', 'teknik.nama as nama_teknik', 'teknik.biaya as biaya_teknik', 'kain.nama as nama_kain', 'kain.biaya as biaya_kain', 'kain.berat as berat_kain')
+            ->select(
+                'keranjang.*',
+                'tbl_hasilbatik.hasilbatik_file as file_batik',
+                'tbl_hasilbatik.hasilbatik_namakarya as nama_batik',
+                'tbl_hasilbatik.hasilbatik_widthCanv as lebar_kain',
+                'tbl_hasilbatik.hasilbatik_heightCanv as tinggi_kain',
+                'warna.nama as nama_warna',
+                'warna.biaya as biaya_warna',
+                'teknik.nama as nama_teknik',
+                'teknik.biaya as biaya_teknik',
+                'kain.nama as nama_kain',
+                'kain.biaya as biaya_kain',
+                'kain.berat as berat_kain'
+            )
             ->leftJoin('tbl_hasilbatik', 'tbl_hasilbatik.hasilbatik_id', '=', 'keranjang.id_hasil_desain')
             ->leftJoin('warna', 'warna.id', '=', 'keranjang.id_warna')
             ->leftJoin('teknik', 'teknik.id', '=', 'keranjang.id_teknik')

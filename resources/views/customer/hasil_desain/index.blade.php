@@ -22,6 +22,7 @@
                                     <th>No.</th>
                                     <th>Nama Desain</th>
                                     <th>Gambar Desain</th>
+                                    <th>Ukuran</th>
                                     <th>Tanggal Desain</th>
                                     <th>Tindakan</th>
                                 </tr>
@@ -37,6 +38,7 @@
                                     <td>
                                         <img height="80px" src="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->hasilbatik_file }}">
                                     </td>
+                                    <td>{{ $dt->hasilbatik_widthCanv / 100 . " m x " . $dt->hasilbatik_heightCanv / 100 . " m" }}</td>
                                     <td>{{ $dt->hasilbatik_tanggal }}</td>
                                     <td>
                                         <div class="dropdown">
@@ -45,7 +47,7 @@
                                             </button>
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#keranjang{{ $dt->hasilbatik_id }}">Tambah Keranjang</a>
-                                                <!-- <a class="dropdown-item" href="#" data-toggle="modal" data-target="#hapusdesain{{ $dt->hasilbatik_id }}">Hapus</a> -->
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#hapusdesain{{ $dt->hasilbatik_id }}">Hapus</a>
                                             </div>
                                         </div>
                                     </td>
@@ -108,7 +110,7 @@
 
                                 @empty
                                 <tr>
-                                    <td colspan="4">Data Kosong...</td>
+                                    <td colspan="5">Data Kosong...</td>
                                 </tr>
                                 @endforelse
 

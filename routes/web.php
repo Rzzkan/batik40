@@ -25,6 +25,7 @@ use App\Http\Controllers\StatusTransaksiController;
 use App\Http\Controllers\WarnaController;
 use App\Http\Controllers\TeknikController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\UserDesainController;
 use App\Http\Controllers\ValidasiController;
 
 /*
@@ -68,6 +69,7 @@ Route::resource('alamat', AlamatController::class)->middleware(['checkRole:pelan
 Route::resource('keranjang', KeranjangController::class)->middleware(['checkRole:pelanggan']);
 Route::resource('transaksi', TransaksiController::class)->middleware(['checkRole:pelanggan']);
 Route::resource('review', ReviewController::class)->middleware(['checkRole:pelanggan']);
+Route::resource('desain', UserDesainController::class)->middleware(['checkRole:pelanggan']);
 
 Route::get('get_prov', [RajaOngkirController::class, 'get_prov']);
 Route::get('get_kab', [RajaOngkirController::class, 'get_kab']);

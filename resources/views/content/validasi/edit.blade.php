@@ -27,7 +27,7 @@
                     <div class="col-12">
                         @foreach($validasi->produks as $dt)
                         @php
-                        $harga = ($dt->biaya_mesin + $dt->biaya_warna + $dt->biaya_teknik + $dt->biaya_kain) * $dt->jumlah;
+                        $harga = ($dt->biaya_mesin + $dt->biaya_warna + $dt->biaya_teknik + $dt->biaya_kain) * $dt->jumlah * (($dt->lebar_kain / 100) * ($dt->tinggi_kain / 100));
                         $total = $total + $harga;
                         @endphp
                         <div class="row">
