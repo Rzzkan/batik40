@@ -89,6 +89,13 @@ class HasilDesainController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $hasil_desain = HasilDesainModel::where('hasilbatik_id' => $id)->first();
+
+        // $whereArray = array('hasilbatik_id' => $id);
+
+        $hasil_desain = HasilDesainModel::where('hasilbatik_id', $id);
+        $hasil_desain->delete();
+
+        return redirect()->route('hasil_desain.index')->with(['success' => 'Data Berhasil Dihapus']);
     }
 }

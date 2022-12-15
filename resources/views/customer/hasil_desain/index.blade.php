@@ -92,7 +92,7 @@
                                             </div>
 
                                             <div class="modal-body">
-                                                <form action="{{ route('keranjang.destroy', $dt->hasilbatik_id) }}" method="POST">
+                                                <form action="{{ route('hasil_desain.destroy', $dt->hasilbatik_id) }}" method="POST">
                                                     @csrf
                                                     @method('delete')
 
