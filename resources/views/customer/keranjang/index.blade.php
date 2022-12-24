@@ -256,7 +256,7 @@
                                                 <input type="number" class="form-control" placeholder="" id="inpBerat" name="inpBerat" value="{{ $berat }}">
                                             </div>
 
-                                            <div class="col-md-6 form-group input-group-sm">
+                                            <div class="col-md-6 form-group input-group-sm" hidden>
                                                 <input type="number" class="form-control" placeholder="" id="inpTotal" name="inpTotal" value="{{ $total }}">
                                             </div>
 
@@ -282,6 +282,14 @@
                                                 @endforeach
 
                                                 <!-- <p>Dengan menekan tombol <strong>Lakukan Pemesanan</strong> maka proses akan dilanjutkan pada menu transaksi! </p> -->
+
+
+
+                                                <div class="col-md-12 mb-3">
+                                                    <label class="form-check-label m-2">
+                                                        <input type="checkbox" name="inpBiayaEkstra" class="form-check-input mr-2" value="{{ $data['data_setting']->biaya_ekstra }}"> Jika anda setuju kami akan mempercepat proses pengerjaan produk anda dengan menambah biaya ekstra sebesar <strong>{{ "Rp " . number_format($data['data_setting']->biaya_ekstra,2,',','.')  }}</strong>
+                                                    </label>
+                                                </div>
 
                                                 <button class="btn btn-primary btn-sm" type="submit">Lanjutkan Pemesanan</button>
                                                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Batal</button>

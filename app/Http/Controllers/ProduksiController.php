@@ -25,6 +25,7 @@ class ProduksiController extends Controller
         $produksi = DB::table('transaksi')
             ->select('transaksi.*', 'proses.nama as nama_proses')
             ->leftJoin('proses', 'transaksi.id_proses', '=', 'proses.id')
+            ->where('status', 'proses')
             ->orderBy('id', 'DESC')
             ->get();
 

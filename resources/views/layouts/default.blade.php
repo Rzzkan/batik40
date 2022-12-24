@@ -56,7 +56,7 @@
                             </div>
                             <div class="ml-md-auto py-2 py-md-0">
                                 <!-- <a href="#" class="btn btn-white btn-border btn-round mr-2">Pengelola</a> -->
-                                <a href="#" class="btn btn-secondary btn-round">Lihat Website</a>
+                                <a href="{{ route('home') }}" target="_blank" class="btn btn-secondary btn-round">Lihat Website</a>
                             </div>
                         </div>
                     </div>

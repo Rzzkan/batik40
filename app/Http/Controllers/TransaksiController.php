@@ -67,11 +67,12 @@ class TransaksiController extends Controller
         // die();
 
         $transaksi = Transaksi::create([
-            'total' => $request->inpTotal,
+            'total' => $request->inpTotal + $request->inpBiayaEkstra,
             'id_alamat' => $request->inpAlamat,
             'status_pengiriman' => 'validasi',
             'id_user' => auth()->user()->id,
-            'berat' => $request->inpBerat
+            'berat' => $request->inpBerat,
+            'biaya_ekstra' => $request->inpBiayaEkstra
         ]);
 
         $idTran = $transaksi['id'];

@@ -73,6 +73,9 @@
                         @endif
                         @endforeach
 
+                        @if($dto->biaya_ekstra > 0)
+                        Biaya Ekstra: <br><strong> {{ "Rp " . number_format($dto->biaya_ekstra,2,',','.') }}</strong>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -171,6 +174,10 @@
 
                     <hr>
 
+                    <strong>Catatan : </strong><br>
+                    {{ $dto->catatan }}
+                    <hr>
+
                     <strong>Total Harga Fix : </strong>
                     <h4>
                         <strong>
@@ -179,11 +186,11 @@
                     </h4>
 
                     @if($dto->sudah_dibayar == 0)
-                    <button class="btn btn-danger btn-sm disabled"><i class="fas fa-credit-card mr-2"> </i> Belum Dibayar</button>
+                    <button class="btn btn-outline-danger btn-sm disabled"><i class="fas fa-credit-card mr-2"> </i> Belum Dibayar</button>
                     @elseif($dto->sudah_dibayar == 1)
-                    <button class="btn btn-warning btn-sm disabled"><i class="fas fa-credit-card mr-2"> </i> Cek Pembayaran</button>
+                    <button class="btn btn-outline-warning btn-sm disabled"><i class="fas fa-credit-card mr-2"> </i> Cek Pembayaran</button>
                     @else
-                    <button class="btn btn-success btn-sm disabled"><i class="fas fa-credit-card mr-2"> </i> Sudah Dibayar</button>
+                    <button class="btn btn-outline-success btn-sm disabled"><i class="fas fa-credit-card mr-2"> </i> Sudah Dibayar</button>
                     @endif
 
                     <hr>

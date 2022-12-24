@@ -48,8 +48,8 @@
                     </div>
 
                     <div class="col-12">
-                        <h4><strong>Total: </strong></h4>
-                        <h2><strong>{{ "Rp " . number_format($total,2,',','.') }}</strong></h2>
+                        <u>Total + Biaya Ekstra:</u>
+                        <h3><strong>{{ "Rp " . number_format($total,2,',','.') . " + Rp " . number_format($validasi->biaya_ekstra,2,',','.') }}</strong></h3>
                     </div>
                 </div>
             </div>
@@ -103,6 +103,12 @@
                                         <input type="radio" class="form-check-input" id="inpStatus3" name="inpStatus" value="batal" @if($validasi->status == 'batal') checked @endif >Tolak atau Batalkan
                                     </label>
                                 </div>
+
+                            </div>
+
+                            <div class="col-md-12 form-group input-group-sm">
+                                <label for="inpCatatan">Tulis Catatan</label>
+                                <textarea type="text" class="form-control" placeholder="Catatan" id="inpCatatan" name="inpCatatan">{{ $validasi->catatan }}</textarea>
                             </div>
 
                             <div class="col-md-6 form-group input-group-sm">

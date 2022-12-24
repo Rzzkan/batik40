@@ -87,6 +87,8 @@
                                                     <hr>
                                                     <strong>Ongkir: </strong><br>{{ "Rp " . number_format($dt->ro_cost,2,',','.') }}
                                                     <hr>
+                                                    <strong>Biaya Ekstra: </strong><br>{{ "Rp " . number_format(($dt->biaya_ekstra),2,',','.') }}
+                                                    <hr>
                                                     <strong>Total: </strong><br>{{ "Rp " . number_format(($dt->total + $dt->ro_cost),2,',','.') }}
                                                     <hr>
                                                     <strong>Resi: </strong><br>{{ $dt->resi }}

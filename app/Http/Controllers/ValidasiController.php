@@ -98,6 +98,7 @@ class ValidasiController extends Controller
 
         $dataUp['total'] = $request->inpTotal;
         $dataUp['status'] = $request->inpStatus;
+        $dataUp['catatan'] = $request->inpCatatan;
 
         $validasi = Transaksi::findOrFail($id);
         $validasi->update($dataUp);

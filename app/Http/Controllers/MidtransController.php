@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaksi;
+use Exception;
 use Illuminate\Http\Request;
 
 class MidtransController extends Controller
@@ -46,7 +47,7 @@ class MidtransController extends Controller
 
         $get_data = Transaksi::where('id', $request->inpIdTransaksi)->first();
 
-        echo $get_data;
+        // echo $get_data;
 
         if ($get_data != null) {
 
@@ -72,9 +73,15 @@ class MidtransController extends Controller
                 ),
             );
 
-            $snapToken = \Midtrans\Snap::getSnapToken($params);
+            try {
+                $snapToken = \Midtrans\Snap::getSnapToken($params);
+                return redirect('https://app.sandbox.midtrans.com/snap/v2/vtweb/' . $snapToken);
+            }
 
-            return redirect('https://app.sandbox.midtrans.com/snap/v2/vtweb/' . $snapToken);
+            //catch exception
+            catch (Exception $e) {
+                return redirect()->route('transaksi.show', 'belum_dibayar')->with(['failed' => 'Terjadi kesalahan, silakan coba lagi nanti atau hubungi admin! Jika anda sudah membayar, segera tekan tombol Konfirmasi Pembayaran agar pembayaran anda segera diproses!']);
+            }
         } else {
             return redirect()->route('transaksi.index')->with(['failed' => 'Terjadi kesalahan, silakan coba lagi nanti.']);
         }

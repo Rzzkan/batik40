@@ -16,7 +16,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-head-row">
-                        <strong><i class="fas fa-clipboard-check mr-2"> </i>Perbarui Proses Produksi BTK{{ $produksi->id }}RK </strong><a href="{{ url()->previous() }}" class="btn btn-danger btn-sm ml-auto"><i class="fas fa-arrow-left mr-2"> </i> Back</a>
+                        <strong><i class="fas fa-clipboard-check mr-2"> </i>Perbarui Proses Produksi BTK{{ $produksi->id }}RK </strong><a href="{{ route('produksi.index') }}" class="btn btn-danger btn-sm ml-auto"><i class="fas fa-arrow-left mr-2"> </i> Back</a>
                     </div>
                 </div>
                 <div class="card-body">

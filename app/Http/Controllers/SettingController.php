@@ -118,6 +118,7 @@ class SettingController extends Controller
         $dataUp['base_url_img_desain_batik'] = $request->inpUrlHasilDesain;
         $dataUp['url_desain'] = $request->inpUrlDesain;
         $dataUp['no_toko'] = $request->inpNomor;
+        $dataUp['biaya_ekstra'] = $request->inpBiayaEkstra;
 
         $dataUp['id_prov_toko'] = explode("---", $request->id_prov_toko)[0];
         $dataUp['id_kab_toko'] = explode("---", $request->id_kab_toko)[0];

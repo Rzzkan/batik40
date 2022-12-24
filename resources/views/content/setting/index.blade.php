@@ -69,6 +69,26 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
+                        <strong><i class="far fa-hdd mr-2"> </i> Biaya Ekstra - ({{ "Rp " . number_format($setting->biaya_ekstra,2,',','.') }})</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 form-group input-group-sm">
+                                <label for="inpBiayaEkstra">Biaya Ekstra </label>
+                                <input type="number" class="form-control" placeholder="0" id="inpBiayaEkstra" name="inpBiayaEkstra" value="{{ $setting->biaya_ekstra }}">
+                            </div>
+
+                            <div class="col-12 form-group input-group-sm">
+                                <input class="btn btn-primary btn-sm" type="submit" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
                         <strong><i class="far fa-hdd mr-2"> </i> Lokasi Toko: </strong>
                     </div>
                     <div class="card-body">

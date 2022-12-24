@@ -20,7 +20,8 @@ class SettingModel extends Model
         'nama_prov_toko',
         'base_url_img_desain_batik',
         'url_desain',
-        'no_toko'
+        'no_toko',
+        'biaya_ekstra'
     ];
 
     protected $hidden = [];
