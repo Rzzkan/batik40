@@ -53,7 +53,12 @@
 
                         <div class="row">
                             <div class="col-2">
-                                <img src="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->file_batik }}" width="100%" style="border: 1px solid gray;">
+                                <!-- <img src="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->file_batik }}" width="100%" style="border: 1px solid gray;"> -->
+                                @if(count(explode('/', $dt->file_batik)) == 2)
+                                <img height="80px" src="{{ asset($dt->file_batik) }}" width="100%" style="border: 1px solid gray;">
+                                @else
+                                <img height="80px" src="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->file_batik }}" width="100%" style="border: 1px solid gray;">
+                                @endif
                             </div>
                             <div class="col">
                                 <strong>{{ strtoupper($dt->nama_batik) }}</strong>
@@ -73,9 +78,16 @@
                         @endif
                         @endforeach
 
-                        @if($dto->biaya_ekstra > 0)
-                        Biaya Ekstra: <br><strong> {{ "Rp " . number_format($dto->biaya_ekstra,2,',','.') }}</strong>
-                        @endif
+
+                        Biaya Ekstra: <br>
+                        <strong>
+                            @if($dto->biaya_ekstra > 0)
+                            {{ "Rp " . number_format($dto->biaya_ekstra,2,',','.') }}
+                            @else
+                            -
+                            @endif
+                        </strong>
+
                     </div>
                 </div>
             </div>
@@ -105,6 +117,11 @@
                 <!--belum bayar-->
                 @if($posisi == 'belum_dibayar')
                 <div class="card-body">
+                    <strong>Catatan : </strong><br>
+                    {{ $dto->catatan }}
+                    <br>
+                    <br>
+
                     <strong>Alamat Pengiriman:</strong>
                     <p>
                         @if($dto->ro_cost > 0)
@@ -113,14 +130,14 @@
                         Belum memilih metode pengiriman.
                         @endif
                     </p>
-                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#pengiriman{{ $dto->id }}"><i class="fa fa-truck mr-2" aria-hidden="true"></i> Pilih Pengiriman</button>
+                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#pengiriman{{ $dto->id }}"><i class="fa fa-truck mr-2" aria-hidden="true"></i> Pilih Pengiriman dan Biaya Ekstra</button>
 
                     <div class="modal fade" id="pengiriman{{ $dto->id }}">
                         <div class="modal-dialog modal-dialog-centered modal-lg">
                             <div class="modal-content">
 
                                 <div class="modal-header">
-                                    <h5 class="modal-title"><strong><i class="fa fa-truck mr-2" aria-hidden="true"></i> Pilih Pengiriman </strong></h5>
+                                    <h5 class="modal-title"><strong><i class="fa fa-truck mr-2" aria-hidden="true"></i> Pilih Pengiriman dan Biaya Ekstra</strong></h5>
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
 
@@ -162,8 +179,14 @@
                                                 </select>
                                             </div>
 
+                                            <div class="col-md-6 form-group input-group-sm">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" name="inpBiayaEkstra" class="form-check-input ml-1 mr-2" value="{{ $data['data_setting']->biaya_ekstra }}" @if($dto->biaya_ekstra > 0) checked @endif> Setujui biaya ekstra sebesar <strong>{{ "Rp " . number_format($data['data_setting']->biaya_ekstra,2,',','.')  }}</strong>
+                                                </label>
+                                            </div>
+
                                             <div class="col-md-12 form-group input-group-sm">
-                                                <input class="btn btn-primary btn-sm" type="submit" class="form-control" value="Pilih Pengiriman">
+                                                <input class="btn btn-primary btn-sm" type="submit" class="form-control" value="Pilih Pengiriman dan Biaya Ekstra">
                                             </div>
                                         </div>
                                     </form>
@@ -172,10 +195,6 @@
                         </div>
                     </div>
 
-                    <hr>
-
-                    <strong>Catatan : </strong><br>
-                    {{ $dto->catatan }}
                     <hr>
 
                     <strong>Total Harga Fix : </strong>
@@ -201,7 +220,6 @@
 
                     <button class="btn btn-sm btn-danger mb-2" data-toggle="modal" data-target="#batal{{ $dto->id }}"><i class="fas fa-window-close mr-2" aria-hidden="true"></i> Batalkan Pesanan</button>
 
-
                     <div class="modal fade" id="konfirm_bayar{{ $dto->id }}">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -220,6 +238,11 @@
                                             <div class="col-md-6 form-group input-group-sm" hidden>
                                                 <label for="inpIdTransaksi">ID Bayar</label>
                                                 <input type="text" class="form-control" placeholder="" value="{{ $dto->id }}" id="inpIdTransaksi" name="inpIdTransaksi">
+                                            </div>
+
+                                            <div class="col-md-6 form-group input-group-sm" hidden>
+                                                <label for="inpIdTransaksi">ID Bayar</label>
+                                                <input type="text" class="form-control" placeholder="" value="belum_dibayar" id="inpDesti" name="inpDesti">
                                             </div>
 
                                             <div class="col-md-12 form-group input-group-sm">
@@ -251,6 +274,12 @@
                                             <div class="col-md-6 form-group input-group-sm" hidden>
                                                 <label for="inpIdTransaksi">ID Bayar</label>
                                                 <input type="text" class="form-control" placeholder="" value="{{ $dto->id }}" id="inpIdTransaksi" name="inpIdTransaksi">
+                                            </div>
+
+                                            <div class="form-group input-group-sm">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" name="inpBayarDp" class="form-check-input" style="margin-right: 6px;" value="1">Bayar DP {{ "Rp " . number_format((($dto->ro_cost + $dto->total) / 2),2,',','.') }}
+                                                </label>
                                             </div>
 
                                             <div class="col-md-12 form-group input-group-sm">
@@ -377,7 +406,126 @@
                     <p class="text-primary">
                         Pesanan anda dalam proses pengemasan oleh tim kami.
                     </p>
+
+                    @if(($dto->ro_cost + $dto->total) == $dto->bayar_dp || $dto->sudah_dibayar == 1)
+
+                    <hr>
+
+                    <strong>Bayar Pelunasan!</strong>
+                    <br>
+                    <strong>Alamat Pengiriman:</strong>
+                    <p>
+                        @if($dto->ro_cost > 0)
+                        {{ "Rp " . number_format($dto->ro_cost,2,',','.') . " | " . $dto->ro_etd . " | " . $dto->ro_name . " | " . $dto->ro_description . " | (" . $dto->ro_service . ")" }}
+                        @else
+                        Belum memilih metode pengiriman.
+                        @endif
+                    </p>
+
+                    <strong>Total Harga Fix : </strong>
+                    <h4>
+                        <strong>
+                            {{ "Rp " . number_format(($dto->ro_cost + $dto->total),2,',','.') }}
+                        </strong>
+                    </h4>
+
+                    <strong>Sudah Dibayar : </strong>
+                    <h4>
+                        <strong>
+                            {{ "Rp " . number_format(($dto->bayar_dp),2,',','.') }}
+                        </strong>
+                    </h4>
+
+                    @if($dto->sudah_dibayar == 1)
+                    <button class="btn btn-outline-warning btn-sm disabled"><i class="fas fa-credit-card mr-2"> </i> Cek Pembayaran</button>
+                    <br><br>
+                    @else
+                    <hr>
+                    <strong class="text-danger">*Tekan "Konfirmasi Pembayaran" jika anda sudah melakukan pembayaran!</strong>
+                    <br><br>
+                    @endif
+
+                    <button class="btn btn-sm btn-primary mb-2" data-toggle="modal" data-target="#bayar_lunas{{ $dto->id }}" @if($dto->ro_cost < 1) disabled @endif><i class="fas fa-credit-card mr-2" aria-hidden="true"></i> Bayar</button>
+
+                    <button class="btn btn-sm btn-success mb-2" data-toggle="modal" data-target="#konfirm_bayar_lunas{{ $dto->id }}" @if($dto->ro_cost < 1) disabled @endif><i class="fas fa-credit-card mr-2" aria-hidden="true"></i> Konfirmasi Pembarayan</button>
+
+                    <div class="modal fade" id="konfirm_bayar_lunas{{ $dto->id }}">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <h5 class="modal-title"><strong><i class="fas fa-credit-card mr-2" aria-hidden="true"></i> Pembayaran </strong></h5>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <form class="col" action="{{ url('sudah_bayar') }}" method="POST">
+                                        @csrf
+                                        @method('POST')
+                                        <div class="col-12 text-center">
+                                            <strong>Yakin sudah melakukan pembayaran pada produk BTK{{ $dto->id }}RK? Tekan "Sudah Bayar" agar segera kami proses!</strong>
+                                            <div class="col-md-6 form-group input-group-sm" hidden>
+                                                <label for="inpIdTransaksi">ID Bayar</label>
+                                                <input type="text" class="form-control" placeholder="" value="{{ $dto->id }}" id="inpIdTransaksi" name="inpIdTransaksi">
+                                            </div>
+
+                                            <div class="col-md-6 form-group input-group-sm" hidden>
+                                                <label for="inpIdTransaksi">ID Bayar</label>
+                                                <input type="text" class="form-control" placeholder="" value="dikemas" id="inpDesti" name="inpDesti">
+                                            </div>
+
+                                            <div class="col-md-12 form-group input-group-sm">
+                                                <input class="btn btn-primary btn-sm" type="submit" class="form-control" value="Sudah Bayar">
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="bayar_lunas{{ $dto->id }}">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <h5 class="modal-title"><strong><i class="fas fa-credit-card mr-2" aria-hidden="true"></i> Pembayaran </strong></h5>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <form class="col" action="{{ url('bayar_pesanan') }}" method="POST" target="_blank">
+                                        @csrf
+                                        @method('POST')
+                                        <div class="col-12 text-center">
+                                            <strong>Yakin akan melakukan pembayaran pada produk BTK{{ $dto->id }}RK? Tekan "Bayar Sekarang" untuk melakukan pembayaran!</strong>
+                                            <div class="col-md-6 form-group input-group-sm" hidden>
+                                                <label for="inpIdTransaksi">ID Bayar</label>
+                                                <input type="text" class="form-control" placeholder="" value="{{ $dto->id }}" id="inpIdTransaksi" name="inpIdTransaksi">
+                                            </div>
+
+                                            <div class="form-group input-group-sm" hidden>
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" name="inpBayarDp" class="form-check-input" style="margin-right: 6px;" value="1" checked>Bayar DP {{ "Rp " . number_format((($dto->ro_cost + $dto->total) / 2),2,',','.') }}
+                                                </label>
+                                            </div>
+
+                                            <div class="col-md-12 form-group input-group-sm">
+                                                <input class="btn btn-primary btn-sm" type="submit" class="form-control" value="Bayar Sekarang">
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @endif
+
                 </div>
+
                 @endif
 
                 <!--dikirim-->

@@ -46,6 +46,8 @@
                                         <button class="btn btn-danger btn-sm disabled"><i class="fas fa-credit-card mr-2"> </i> Belum Dibayar</button>
                                         @elseif($dt->sudah_dibayar == 1)
                                         <button class="btn btn-warning btn-sm disabled"><i class="fas fa-credit-card mr-2"> </i> Cek Pembayaran</button>
+                                        @elseif($dt->sudah_dibayar == 3)
+                                        <button class="btn btn-warning btn-sm disabled"><i class="fas fa-credit-card mr-2"> </i> Dibayar DP</button>
                                         @else
                                         <button class="btn btn-success btn-sm disabled"><i class="fas fa-credit-card mr-2"> </i> Sudah Dibayar</button>
                                         @endif
@@ -90,6 +92,8 @@
                                                     <strong>Biaya Ekstra: </strong><br>{{ "Rp " . number_format(($dt->biaya_ekstra),2,',','.') }}
                                                     <hr>
                                                     <strong>Total: </strong><br>{{ "Rp " . number_format(($dt->total + $dt->ro_cost),2,',','.') }}
+                                                    <hr>
+                                                    <strong>Sudah Dibayar: </strong><br>{{ "Rp " . number_format(($dt->bayar_dp),2,',','.') }}
                                                     <hr>
                                                     <strong>Resi: </strong><br>{{ $dt->resi }}
                                                     <hr>
@@ -148,8 +152,13 @@
                                                                         </label>
                                                                     </div>
                                                                     <div class="form-check-inline">
+                                                                        <label class="form-check-label" for="inpStatus4">
+                                                                            <input type="radio" class="form-check-input" id="inpStatus4" name="inpStatusPembayaran" value="3" @if($dt->sudah_dibayar == 3) checked @endif >Sudah Dibayar DP
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="form-check-inline">
                                                                         <label class="form-check-label" for="inpStatus3">
-                                                                            <input type="radio" class="form-check-input" id="inpStatus3" name="inpStatusPembayaran" value="2" @if($dt->sudah_dibayar == 2) checked @endif >Sudah Dibayar
+                                                                            <input type="radio" class="form-check-input" id="inpStatus3" name="inpStatusPembayaran" value="2" @if($dt->sudah_dibayar == 2) checked @endif >Sudah Dibayar Lunas
                                                                         </label>
                                                                     </div>
                                                                 </div>

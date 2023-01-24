@@ -11,7 +11,8 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-head-row">
-                        <strong><i class="fas fa-align-left mr-2"> </i> Data Hasil Desain</strong><a href="{{ url()->previous() }}" class="btn btn-danger btn-sm ml-auto"><i class="fas fa-arrow-left mr-2"> </i> Back</a>
+                        <strong><i class="fas fa-align-left mr-2"> </i> Data Hasil Desain</strong>
+                        <a href="{{ route('hasil_desain.create') }}" class="btn btn-primary btn-sm ml-auto"><i class="fas fa-plus mr-2"> </i> Tambah Hasil Desain</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -36,7 +37,11 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $dt->hasilbatik_namakarya }}</td>
                                     <td>
+                                        @if(count(explode('/', $dt->hasilbatik_file)) == 2)
+                                        <img height="80px" src="{{ asset($dt->hasilbatik_file) }}">
+                                        @else
                                         <img height="80px" src="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->hasilbatik_file }}">
+                                        @endif
                                     </td>
                                     <td>{{ $dt->hasilbatik_widthCanv / 100 . " m x " . $dt->hasilbatik_heightCanv / 100 . " m" }}</td>
                                     <td>{{ $dt->hasilbatik_tanggal }}</td>

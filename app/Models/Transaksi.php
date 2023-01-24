@@ -14,7 +14,8 @@ class Transaksi extends Model
     protected $fillable = [
         'total', 'id_proses', 'status', 'id_alamat', 'berat', 'resi', 'ro_code',
         'ro_name', 'ro_service', 'ro_description', 'ro_cost', 'ro_etd', 'poin_bintang',
-        'komentar', 'status_pengiriman', 'sudah_dibayar', 'id_user', 'biaya_ekstra', 'catatan'
+        'komentar', 'status_pengiriman', 'sudah_dibayar', 'id_user', 'biaya_ekstra', 'catatan',
+        'bayar_dp'
     ];
 
     protected $hidden = [];

@@ -72,7 +72,7 @@ class TransaksiController extends Controller
             'status_pengiriman' => 'validasi',
             'id_user' => auth()->user()->id,
             'berat' => $request->inpBerat,
-            'biaya_ekstra' => $request->inpBiayaEkstra
+            // 'biaya_ekstra' => $request->inpBiayaEkstra
         ]);
 
         $idTran = $transaksi['id'];
@@ -146,7 +146,24 @@ class TransaksiController extends Controller
             'inpPengiriman' => 'required'
         ]);
 
+        $transaksi = Transaksi::findOrFail($id);
+
         $pisah_pengiriman = explode("---", $request->inpPengiriman);
+        $biaya_total = $transaksi->total;
+
+        // echo $request->inpBiayaEkstra;
+        // die();
+
+        if ($transaksi->biaya_ekstra > 0) {
+            if ($request->inpBiayaEkstra != null || $request->inpBiayaEkstra > 0) {
+            } else {
+                $biaya_total = $biaya_total - $transaksi->biaya_ekstra;
+            }
+        } else {
+            if ($request->inpBiayaEkstra > 0) {
+                $biaya_total = $biaya_total + $request->inpBiayaEkstra;
+            }
+        }
 
         $dataUp['ro_code'] = $pisah_pengiriman[0];
         $dataUp['ro_name'] = $pisah_pengiriman[1];
@@ -154,11 +171,12 @@ class TransaksiController extends Controller
         $dataUp['ro_description'] = $pisah_pengiriman[3];
         $dataUp['ro_cost'] = $pisah_pengiriman[4];
         $dataUp['ro_etd'] = $pisah_pengiriman[5];
+        $dataUp['biaya_ekstra'] = $request->inpBiayaEkstra;
+        $dataUp['total'] = $biaya_total;
 
-        $keranjang = Transaksi::findOrFail($id);
-        $keranjang->update($dataUp);
+        $transaksi->update($dataUp);
 
-        return redirect()->route('transaksi.show', $keranjang->status_pengiriman)->with(['success' => 'Data Berhasil Disimpan.']);
+        return redirect()->route('transaksi.show', $transaksi->status_pengiriman)->with(['success' => 'Data Berhasil Disimpan.']);
     }
 
     /**

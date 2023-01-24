@@ -33,7 +33,13 @@ class HasilDesainController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'Hasil Desain';
+        $sub_title = 'Tambah Data Hasil Desain';
+
+        return view('customer.hasil_desain.create', compact(
+            'title',
+            'sub_title'
+        ));
     }
 
     /**
@@ -44,7 +50,30 @@ class HasilDesainController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'hasilbatik_namakarya' => 'required',
+            'hasilbatik_file' => 'required',
+            'hasilbatik_widthCanv' => 'required',
+            'hasilbatik_heightCanv' => 'required',
+        ]);
+
+        if ($file = $request->hasFile('hasilbatik_file')) {
+            $file = $request->file('hasilbatik_file');
+            $fileName = auth()->user()->id . time() . uniqid() . '.' . $file->getClientOriginalExtension();
+            $destinationPath = public_path() . '/desain';
+            $file->move($destinationPath, $fileName);
+            $simpan_desain = 'desain/' . $fileName;
+        }
+
+        $hasil_batik = HasilDesainModel::create([
+            'hasilbatik_namakarya' => $request->hasilbatik_namakarya,
+            'hasilbatik_file' => $simpan_desain,
+            'hasilbatik_widthCanv' => $request->hasilbatik_widthCanv,
+            'hasilbatik_heightCanv' => $request->hasilbatik_heightCanv,
+            'id_customer' => auth()->user()->id,
+        ]);
+
+        return redirect()->route('hasil_desain.index')->with(['success' => 'Data Berhasil Disimpan']);
     }
 
     /**

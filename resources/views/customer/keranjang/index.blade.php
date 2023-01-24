@@ -32,7 +32,12 @@
 
                         <div class="row">
                             <div class="col-3">
-                                <img src="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->file_batik }}" width="100%" style="border: 1px solid gray;">
+                                <!-- <img src="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->file_batik }}" width="100%" style="border: 1px solid gray;"> -->
+                                @if(count(explode('/', $dt->file_batik)) == 2)
+                                <img height="80px" src="{{ asset($dt->file_batik) }}" width="100%" style="border: 1px solid gray;">
+                                @else
+                                <img height="80px" src="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->file_batik }}" width="100%" style="border: 1px solid gray;">
+                                @endif
                             </div>
                             <div class="col">
                                 <strong>{{ strtoupper($dt->nama_batik) }}</strong>
@@ -89,8 +94,12 @@
 
                                                     <div class="row">
                                                         <div class="col-12 text-center">
-                                                            <img src="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->file_batik }}" height="80px" style="border: 1px solid gray;">
-
+                                                            <!-- <img src="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->file_batik }}" height="80px" style="border: 1px solid gray;"> -->
+                                                            @if(count(explode('/', $dt->file_batik)) == 2)
+                                                            <img height="80px" src="{{ asset($dt->file_batik) }}">
+                                                            @else
+                                                            <img height="80px" src="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->file_batik }}">
+                                                            @endif
                                                             <p>
                                                                 {{ "Warna: " . $dt->nama_warna . ", teknik: " . $dt->nama_teknik . ", kain: " . $dt->nama_kain }}
                                                             </p>
@@ -283,9 +292,7 @@
 
                                                 <!-- <p>Dengan menekan tombol <strong>Lakukan Pemesanan</strong> maka proses akan dilanjutkan pada menu transaksi! </p> -->
 
-
-
-                                                <div class="col-md-12 mb-3">
+                                                <div class="col-md-12 mb-3" hidden>
                                                     <label class="form-check-label m-2">
                                                         <input type="checkbox" name="inpBiayaEkstra" class="form-check-input mr-2" value="{{ $data['data_setting']->biaya_ekstra }}"> Jika anda setuju kami akan mempercepat proses pengerjaan produk anda dengan menambah biaya ekstra sebesar <strong>{{ "Rp " . number_format($data['data_setting']->biaya_ekstra,2,',','.')  }}</strong>
                                                     </label>

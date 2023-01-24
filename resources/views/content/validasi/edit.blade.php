@@ -32,7 +32,12 @@
                         @endphp
                         <div class="row">
                             <div class="col-2">
+                                <!-- <img src="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->file_batik }}" width="100%" style="border: 1px solid gray;"> -->
+                                @if(count(explode('/', $dt->file_batik)) == 2)
+                                <img src="{{ asset($dt->file_batik) }}" width="100%" style="border: 1px solid gray;">
+                                @else
                                 <img src="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->file_batik }}" width="100%" style="border: 1px solid gray;">
+                                @endif
                             </div>
                             <div class="col">
                                 <strong>{{ strtoupper($dt->nama_batik) }}</strong>
@@ -107,7 +112,7 @@
                             </div>
 
                             <div class="col-md-12 form-group input-group-sm">
-                                <label for="inpCatatan">Tulis Catatan</label>
+                                <label for="inpCatatan">Tulis Catatan, Estimasi Waktu Produksi, Estimasi Dengan Biaya Ekstra</label>
                                 <textarea type="text" class="form-control" placeholder="Catatan" id="inpCatatan" name="inpCatatan">{{ $validasi->catatan }}</textarea>
                             </div>
 

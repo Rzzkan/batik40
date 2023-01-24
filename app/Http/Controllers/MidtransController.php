@@ -12,7 +12,8 @@ class MidtransController extends Controller
     {
 
         $this->validate($request, [
-            'inpIdTransaksi' => 'required'
+            'inpIdTransaksi' => 'required',
+            'inpDesti' => 'required'
         ]);
 
         $dataUp['sudah_dibayar'] = 1;
@@ -20,7 +21,7 @@ class MidtransController extends Controller
         $transaksi = Transaksi::findOrFail($request->inpIdTransaksi);
         $transaksi->update($dataUp);
 
-        return redirect()->route('transaksi.show', 'belum_dibayar')->with(['success' => 'Data Berhasil Disimpan.']);
+        return redirect()->route('transaksi.show', $request->inpDesti)->with(['success' => 'Data Berhasil Disimpan.']);
     }
 
     public function batal_pesanan(Request $request)
@@ -45,14 +46,17 @@ class MidtransController extends Controller
             'inpIdTransaksi' => 'required'
         ]);
 
-        $get_data = Transaksi::where('id', $request->inpIdTransaksi)->first();
+        $get_data = Transaksi::findOrFail($request->inpIdTransaksi);
 
         // echo $get_data;
 
         if ($get_data != null) {
 
             // Set your Merchant Server Key
+            // Sandbox
             \Midtrans\Config::$serverKey = 'SB-Mid-server-0Mas5Z2kfCF4UZGEr-WXyFwR';
+            // Real
+            // \Midtrans\Config::$serverKey = 'SB-Mid-server-xIsCNi3FO6imCqwDeBhUGL5I';
             // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
             \Midtrans\Config::$isProduction = false;
             // Set sanitization on (default)
@@ -60,10 +64,20 @@ class MidtransController extends Controller
             // Set 3DS transaction for credit card to true
             \Midtrans\Config::$is3ds = true;
 
+            $bayar_mid = $get_data->total + $get_data->ro_cost;
+            $id_dp = "";
+
+            if ($request->inpBayarDp == 1) {
+                $bayar_mid = ($get_data->total + $get_data->ro_cost) / 2;
+                if ($get_data->bayar_dp != null) {
+                    $id_dp = "2";
+                }
+            }
+
             $params = array(
                 'transaction_details' => array(
-                    'order_id' => $get_data->id,
-                    'gross_amount' => $get_data->total + $get_data->ro_cost,
+                    'order_id' => $get_data->id . '_' . $id_dp,
+                    'gross_amount' => $bayar_mid,
                 ),
                 'customer_details' => array(
                     'first_name' => auth()->user()->name,
@@ -74,7 +88,16 @@ class MidtransController extends Controller
             );
 
             try {
+                // if ($get_data->bayar_dp == null) {
+                //     $dataUp['bayar_dp'] = $bayar_mid;
+                //     $get_data->update($dataUp);
+                // } else {
+                $dataUp['bayar_dp'] = $bayar_mid + $get_data->bayar_dp;
+                $get_data->update($dataUp);
+                // }
+
                 $snapToken = \Midtrans\Snap::getSnapToken($params);
+                // return redirect('https://app.midtrans.com/snap/v2/vtweb/' . $snapToken);
                 return redirect('https://app.sandbox.midtrans.com/snap/v2/vtweb/' . $snapToken);
             }
 
