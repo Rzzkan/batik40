@@ -53,10 +53,12 @@ class MidtransController extends Controller
         if ($get_data != null) {
 
             // Set your Merchant Server Key
-            // Sandbox
-            \Midtrans\Config::$serverKey = 'SB-Mid-server-0Mas5Z2kfCF4UZGEr-WXyFwR';
-            // Real
-            // \Midtrans\Config::$serverKey = 'SB-Mid-server-xIsCNi3FO6imCqwDeBhUGL5I';
+            // Sandbox Sebaya
+            // \Midtrans\Config::$serverKey = 'SB-Mid-server-0Mas5Z2kfCF4UZGEr-WXyFwR';
+            // Sandbox Batik
+            \Midtrans\Config::$serverKey = 'SB-Mid-server-xIsCNi3FO6imCqwDeBhUGL5I';
+            // Real Sebaya
+            // \Midtrans\Config::$serverKey = 'Mid-server-4AXJ0mFunVIVH1GbGUTUTgx6';
             // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
             \Midtrans\Config::$isProduction = false;
             // Set sanitization on (default)

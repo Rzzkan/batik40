@@ -100,9 +100,9 @@ class StatusTRansaksiController extends Controller
 
         if ($request->inpStatusPembayaran != null) {
             $dataUp['sudah_dibayar'] = $request->inpStatusPembayaran;
-            if ($request->inpStatusPembayaran == 2) {
-                $dataUp['status_pengiriman'] = 'diproses';
-            }
+            // if ($request->inpStatusPembayaran == 2) {
+            //     $dataUp['status_pengiriman'] = 'diproses';
+            // }
         }
 
         $transaksi = Transaksi::findOrFail($id);

@@ -407,7 +407,7 @@
                         Pesanan anda dalam proses pengemasan oleh tim kami.
                     </p>
 
-                    @if(($dto->ro_cost + $dto->total) == $dto->bayar_dp || $dto->sudah_dibayar == 1)
+                    @if(($dto->ro_cost + $dto->total) != $dto->bayar_dp || $dto->sudah_dibayar == 1 || $dto->sudah_dibayar == 3)
 
                     <hr>
 

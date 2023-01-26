@@ -1,10 +1,11 @@
 <div class="main-header">
     <!-- Logo Header -->
-    <div class="logo-header" @if(auth()->user()->role == 'pelanggan') data-background-color="light" @else data-background-color="blue" @endif >
+    <div class="logo-header" @if(auth()->user()->role == 'pelanggan') data-background-color="orange" @else data-background-color="blue" @endif >
 
         <a href="index.html" class="logo">
             @if(auth()->user()->role == 'pelanggan')
-            <img style="height:38px;" src="{{ asset('tema/img/logo_batik_4_0_gelap.png') }}" alt="navbar brand" class="navbar-brand">
+            <!-- <img style="height:38px;" src="{{ asset('tema/img/logo_batik_4_0_gelap.png') }}" alt="navbar brand" class="navbar-brand"> -->
+            <img style="height:38px;" src="{{ asset('tema/img/logo_batik_4_0.png') }}" alt="navbar brand" class="navbar-brand">
             @else
             <img style="height:38px;" src="{{ asset('tema/img/logo_batik_4_0.png') }}" alt="navbar brand" class="navbar-brand">
             @endif

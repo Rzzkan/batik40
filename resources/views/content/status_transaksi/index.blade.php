@@ -85,7 +85,7 @@
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    <strong>Produk: </strong><br>{{ "Rp " . number_format($dt->total,2,',','.') }}
+                                                    <strong>Produk: </strong><br>{{ "Rp " . number_format(($dt->total - $dt->biaya_ekstra),2,',','.') }}
                                                     <hr>
                                                     <strong>Ongkir: </strong><br>{{ "Rp " . number_format($dt->ro_cost,2,',','.') }}
                                                     <hr>
