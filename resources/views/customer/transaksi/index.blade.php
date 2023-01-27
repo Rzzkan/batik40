@@ -1,6 +1,27 @@
 @extends('layouts.default')
 @section('content')
 <div class="page-inner mt-2">
+
+    @if(Session::has('success'))
+    <div class="alert alert-success">
+        {{ Session('success') }}
+    </div>
+    @endif
+    @if(Session::has('failed'))
+    <div class="alert alert-danger">
+        {{ Session('failed') }}
+    </div>
+    @endif
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
     <div class="row">
 
         <div class="col-md-12 mb-3">
@@ -19,25 +40,6 @@
         @foreach ($get_data as $dto)
 
         <div class="col-md-8">
-            @if(Session::has('success'))
-            <div class="alert alert-success">
-                {{ Session('success') }}
-            </div>
-            @endif
-            @if(Session::has('failed'))
-            <div class="alert alert-danger">
-                {{ Session('failed') }}
-            </div>
-            @endif
-            @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
 
             <div class="card">
                 <div class="card-header">
