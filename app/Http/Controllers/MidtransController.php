@@ -78,7 +78,7 @@ class MidtransController extends Controller
 
             $params = array(
                 'transaction_details' => array(
-                    'order_id' => $get_data->id . '_' . $id_dp,
+                    'order_id' => auth()->user()->token . '_' . $get_data->id . '_' . $id_dp,
                     'gross_amount' => $bayar_mid,
                 ),
                 'customer_details' => array(
