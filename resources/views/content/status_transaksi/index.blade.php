@@ -36,7 +36,9 @@
                                     <td class="align-top">{{ $no++ . ". BTK" . $dt->id }}RK</td>
                                     <td class="align-top">
                                         <strong>Akun : {{ $dt->email_user }} </strong>
+                                        @if($dt->alamat->penerima != null && $dt->alamat->no_hp != null)
                                         <br><small>Penerima : {{ $dt->alamat->penerima .' | '. $dt->alamat->no_hp }}</small>
+                                        @endif
                                     </td>
                                     <td class="align-top">
                                         <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#detail{{ $dt->id }}"><i class="fas fa-credit-card mr-2"> </i> Lihat Detail </button>
