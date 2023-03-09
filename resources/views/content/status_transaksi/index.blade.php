@@ -36,8 +36,10 @@
                                     <td class="align-top">{{ $no++ . ". BTK" . $dt->id }}RK</td>
                                     <td class="align-top">
                                         <strong>Akun : {{ $dt->email_user }} </strong>
+                                        @if($dt->alamat != null)
                                         @if($dt->alamat->penerima != null && $dt->alamat->no_hp != null)
                                         <br><small>Penerima : {{ $dt->alamat->penerima .' | '. $dt->alamat->no_hp }}</small>
+                                        @endif
                                         @endif
                                     </td>
                                     <td class="align-top">
@@ -102,7 +104,10 @@
                                                     <strong>Expedisi: </strong><br>{{ $dt->ro_description .' ('. $dt->ro_service .') | '. $dt->ro_etd .' hari | '. $dt->ro_name }}
                                                     <hr>
                                                     <strong>Alamat: </strong><br>
+
+                                                    @if($dt->alamat != null)
                                                     {{ $dt->alamat->alamat .', '. $dt->alamat->nama_kec .', '. $dt->alamat->nama_kab .', '. $dt->alamat->nama_prov }}
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

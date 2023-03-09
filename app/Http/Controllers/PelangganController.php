@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AlamatModel;
 use App\Models\CustomerModel;
 use App\Models\Pelanggan;
 use Illuminate\Http\Request;
@@ -161,7 +162,10 @@ class PelangganController extends Controller
     public function destroy($id)
     {
         $pelanggan = Pelanggan::find($id);
+        $alamat = AlamatModel::where('id_user', $id);
         $pelanggan->delete();
+        $alamat->delete();
+
         return redirect()->route('pelanggan.index')->with(['success' => 'Data Berhasil Dihapus']);
     }
 }
