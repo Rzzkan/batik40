@@ -39,8 +39,16 @@
                                     <td>
                                         @if(count(explode('/', $dt->hasilbatik_file)) == 2)
                                         <img height="80px" src="{{ asset($dt->hasilbatik_file) }}">
+                                        <br>
+                                        <a class="btn btn-sm btn-primary my-2" href="{{ asset($dt->hasilbatik_file) }}" download>
+                                            Unduh Desain
+                                        </a>
                                         @else
                                         <img height="80px" src="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->hasilbatik_file }}">
+                                        <br>
+                                        <a class="btn btn-sm btn-primary my-2" href="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->hasilbatik_file }}" download>
+                                            Unduh Desain
+                                        </a>
                                         @endif
                                     </td>
                                     <td>{{ $dt->hasilbatik_widthCanv / 100 . " m x " . $dt->hasilbatik_heightCanv / 100 . " m" }}</td>

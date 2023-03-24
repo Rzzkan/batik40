@@ -46,6 +46,15 @@
                                     <br>
                                     <strong>{{ "Rp " . number_format($harga,2,',','.') }}</strong>
                                 </p>
+                                @if(count(explode('/', $dt->file_batik)) == 2)
+                                <a href="{{ asset($dt->file_batik) }}" class="btn btn-sm btn-primary my-2" download>
+                                    Unduh Desain
+                                </a>
+                                @else
+                                <a href="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->file_batik }}" class="btn btn-sm btn-primary my-2" download>
+                                    Unduh Desain
+                                </a>
+                                @endif
                             </div>
                         </div>
                         <hr>
