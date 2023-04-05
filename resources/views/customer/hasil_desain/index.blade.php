@@ -45,9 +45,13 @@
                                         </a>
                                         @else
                                         <img height="80px" src="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->hasilbatik_file }}">
+                                        <img height="80px" src="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->hasilbatik_filehp }}">
                                         <br>
                                         <a class="btn btn-sm btn-primary my-2" href="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->hasilbatik_file }}" download>
                                             Unduh Desain
+                                        </a>
+                                        <a class="btn btn-sm btn-primary my-2" href="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->hasilbatik_filehp }}" download>
+                                            Unduh Desain Hitam Putih
                                         </a>
                                         @endif
                                     </td>

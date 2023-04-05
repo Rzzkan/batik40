@@ -37,6 +37,7 @@
                                 <img src="{{ asset($dt->file_batik) }}" width="100%" style="border: 1px solid gray;">
                                 @else
                                 <img src="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->file_batik }}" width="100%" style="border: 1px solid gray;">
+                                <img src="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->file_batik_hp }}" width="100%" style="border: 1px solid gray;">
                                 @endif
                             </div>
                             <div class="col">
@@ -53,6 +54,9 @@
                                 @else
                                 <a href="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->file_batik }}" class="btn btn-sm btn-primary my-2" download>
                                     Unduh Desain
+                                </a>
+                                <a href="{{ $data['data_setting']->base_url_img_desain_batik . '/' . $dt->file_batik_hp }}" class="btn btn-sm btn-primary my-2" download>
+                                    Unduh Desain Hitam Putih
                                 </a>
                                 @endif
                             </div>

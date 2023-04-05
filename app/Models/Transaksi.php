@@ -26,6 +26,7 @@ class Transaksi extends Model
             ->select(
                 'keranjang.*',
                 'tbl_hasilbatik.hasilbatik_file as file_batik',
+                'tbl_hasilbatik.hasilbatik_filehp as file_batik_hp',
                 'tbl_hasilbatik.hasilbatik_namakarya as nama_batik',
                 'tbl_hasilbatik.hasilbatik_widthCanv as lebar_kain',
                 'tbl_hasilbatik.hasilbatik_heightCanv as tinggi_kain',
