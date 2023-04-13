@@ -12,7 +12,15 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="basic-datatables" class="table table-bordered table-hover">
+                        <form action="{{ route('motif.index') }}" method="GET">
+                            <div class="input-group mb-3">
+                                <input type="text" name="search" class="form-control" placeholder="Cari motif disini..." value="{{ request('search') }}">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">Cari Motif</button>
+                                </div>
+                            </div>
+                        </form>
+                        <table id="basic-datatables_" class="table table-bordered table-hover">
                             <thead class="thead-light">
                                 <tr>
                                     <th>No.</th>
@@ -31,11 +39,7 @@
                                     <td>{{ $dt->motif_nama }}</td>
                                     <td><img height="80px" src="{{ asset('customer/img') . '/' . $dt->motif_file }}"></td>
                                     <td>
-                                        @foreach ($karakter as $dt_kar)
-                                        @if($dt_kar->motif_id == $dt->motif_id)
-                                        {{ $dt_kar->nama_karakter . ", " }}
-                                        @endif
-                                        @endforeach
+                                        {{ $dt->karakter }}
                                     </td>
                                 </tr>
                                 @empty
@@ -46,6 +50,9 @@
 
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-center">
+                            {{ $motif->links('includes.paginate') }}
+                        </div>
                     </div>
                 </div>
             </div>

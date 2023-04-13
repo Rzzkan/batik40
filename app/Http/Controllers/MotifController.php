@@ -14,22 +14,35 @@ class MotifController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $title = 'Motif Dasar';
         $sub_title = 'Data Motif Dasar';
 
-        $motif = MotifModel::all();
-        $karakter = DB::table('jtbl_motif_karakter')
-            ->select('jtbl_motif_karakter.*', 'tbl_karakter.karakter_nama as nama_karakter')
-            ->leftJoin('tbl_karakter', 'jtbl_motif_karakter.karakter_id', '=', 'tbl_karakter.karakter_id')
-            ->get();
+        $search = $request->input('search');
+
+        $motif = DB::table('tbl_motif as s')
+            ->leftJoin(
+                DB::raw('(SELECT hs.motif_id, GROUP_CONCAT(h.karakter_nama SEPARATOR ", ") as 
+                karakter FROM jtbl_motif_karakter as hs LEFT JOIN tbl_karakter as h ON hs.karakter_id = h.karakter_id GROUP BY hs.motif_id) as sh'),
+                's.motif_id',
+                '=',
+                'sh.motif_id'
+            )
+            ->when($search, function ($query, $search) {
+                return $query->whereRaw("sh.karakter like '%$search%'");
+            })
+            ->select('s.motif_nama', 's.motif_file', 'sh.karakter')
+            ->paginate(10);
+
+        $request->session()->put('search', $search);
+
+        $motif->appends(['search' => $search]);
 
         return view('customer.motif.index', compact(
             'motif',
-            'karakter',
             'title',
-            'sub_title'
+            'sub_title',
         ));
     }
 
