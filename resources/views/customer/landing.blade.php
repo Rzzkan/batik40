@@ -512,6 +512,9 @@
                                 <img height="48px" src="{{ asset('tema/img/logo_batik_4_0_gelap.png') }}" alt="Logo">
                             </a>
                             <p class="text">Batik 4.0 adalah sebuah inovasi integrasi desain dan manufaktur batik berbasis cloud web dengan kolaborasi teknologi dan budaya.</p>
+                            <a href="https://app.batik40.id" target="_blank" class="">
+                                <img src="{{ asset('landing/images/logo_playstore.png') }}" width="120" alt="">
+                            </a>
                         </div> <!-- footer about -->
                     </div>
                     <div class="col-lg-3 col-sm-6 order-sm-3 order-lg-2">
