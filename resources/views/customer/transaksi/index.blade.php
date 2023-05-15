@@ -210,6 +210,8 @@
                     <button class="btn btn-outline-danger btn-sm disabled"><i class="fas fa-credit-card mr-2"> </i> Belum Dibayar</button>
                     @elseif($dto->sudah_dibayar == 1)
                     <button class="btn btn-outline-warning btn-sm disabled"><i class="fas fa-credit-card mr-2"> </i> Cek Pembayaran</button>
+                    @elseif($dto->sudah_dibayar == 3)
+                    <button class="btn btn-outline-warning btn-sm disabled"><i class="fas fa-credit-card mr-2"> </i> Sudah Dibayar DP</button>
                     @else
                     <button class="btn btn-outline-success btn-sm disabled"><i class="fas fa-credit-card mr-2"> </i> Sudah Dibayar</button>
                     @endif
@@ -280,7 +282,7 @@
 
                                             <div class="form-group input-group-sm">
                                                 <label class="form-check-label">
-                                                    <input type="checkbox" name="inpBayarDp" class="form-check-input" style="margin-right: 6px;" value="1">Bayar DP {{ "Rp " . number_format((($dto->ro_cost + $dto->total) / 2),2,',','.') }}
+                                                    <input type="checkbox" name="inpBayarDp" class="form-check-input" style="margin-right: 6px;" value="1" @if($dto->sudah_dibayar == 3) checked readonly @endif>@if($dto->sudah_dibayar == 3) Bayar Pelunasan @else Bayar DP @endif {{ "Rp " . number_format((($dto->ro_cost + $dto->total) / 2),2,',','.') }}
                                                 </label>
                                             </div>
 
